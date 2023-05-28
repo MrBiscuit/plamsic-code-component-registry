@@ -1,6 +1,5 @@
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+module.exports = {
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -9,8 +8,6 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   trailingSlash: true,
+  // Your NextJS config.
 };
-
-module.exports = nextConfig;
-
-
+    
