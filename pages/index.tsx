@@ -27,7 +27,7 @@ function Homepage() {
 
 const handleCopyLink = (e) => {
   e.preventDefault();
-  const url = `localhost:3000/plasmic-host/?components=${selectedComponents.join(",")}`
+  const url = `https://mrbiscuit.github.io/plamsic-code-component-registry/plasmic-host/?components=${selectedComponents.join(",")}`
   
   navigator.clipboard.writeText(url);
   setLinkCopied(true);
