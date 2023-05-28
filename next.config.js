@@ -1,13 +1,12 @@
 
-module.exports = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  typescript: {
-   
-    ignoreBuildErrors: true,
-  },
   trailingSlash: true,
-  // Your NextJS config.
 };
-    
+
+module.exports = nextConfig;
+
+
