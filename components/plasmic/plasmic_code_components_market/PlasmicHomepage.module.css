@@ -5,6 +5,7 @@
   height: 100%;
   align-content: flex-start;
   justify-items: center;
+  background: #ffffff;
   min-width: 0;
   min-height: 0;
   grid-template-columns:
@@ -51,7 +52,43 @@
     grid-column: 4;
   }
 }
+.freeBox {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  padding: 8px;
+}
+.list {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+  padding: 8px;
+}
 .checkbox:global(.__wab_instance) {
   max-width: 100%;
+}
+.checkbox2:global(.__wab_instance) {
+  max-width: 100%;
+  position: relative;
+}
+.copyButton:global(.__wab_instance) {
+  max-width: 100%;
+  position: relative;
+  margin-top: 12px;
+  margin-left: 8px;
+  flex-shrink: 0;
+}
+.prompt:global(.__wab_instance) {
   position: relative;
 }

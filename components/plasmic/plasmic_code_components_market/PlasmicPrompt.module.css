@@ -1,0 +1,10 @@
+.root {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  position: relative;
+  display: inline-block;
+}
+.rootshow {
+  display: block;
+}

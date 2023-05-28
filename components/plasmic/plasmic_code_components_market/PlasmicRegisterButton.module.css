@@ -1,0 +1,30 @@
+.root {
+  display: inline-flex;
+  flex-direction: column;
+  position: relative;
+  width: auto;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  background: #0d99ff;
+  cursor: pointer;
+  border-radius: 6px;
+  padding: 0px 15px;
+  border: 1px solid #0d99ff;
+}
+.root:active {
+  background: #007be5;
+}
+.text {
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  left: auto;
+  top: auto;
+  padding-left: 0px;
+  color: #ffffff;
+  font-size: 15px;
+  user-select: none;
+}

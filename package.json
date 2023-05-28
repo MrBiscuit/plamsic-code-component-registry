@@ -11,6 +11,7 @@
   "dependencies": {
     "@plasmicapp/cli": "^0.1.286",
     "@plasmicapp/react-web": "^0.2.220",
+    "@plasmicpkgs/plasmic-basic-components": "^0.0.154",
     "@types/node": "20.2.5",
     "@types/react": "18.2.7",
     "@types/react-dom": "18.2.4",
@@ -19,6 +20,9 @@
     "next": "13.4.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "typescript": "5.0.4"
+    "react-markdown": "^8.0.7",
+    "react-simple-typewriter": "^5.0.1",
+    "typescript": "5.0.4",
+    "unstyled-textarea-autosize": "^1.0.5"
   }
 }

@@ -37,6 +37,8 @@ import {
   ensureGlobalVariants
 } from "@plasmicapp/react-web";
 import Checkbox from "../../Checkbox"; // plasmic-import: J2h6uk0-o-l/component
+import RegisterButton from "../../RegisterButton"; // plasmic-import: tdd4VyVt1w/component
+import Prompt from "../../Prompt"; // plasmic-import: c4S_3UOZbZ/component
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -44,6 +46,7 @@ import projectcss from "./plasmic_plasmic_code_components_market.module.css"; //
 import sty from "./PlasmicHomepage.module.css"; // plasmic-import: OmsGOMJOWuYk/css
 
 export type PlasmicHomepage__VariantMembers = {};
+
 export type PlasmicHomepage__VariantsArgs = {};
 type VariantPropType = keyof PlasmicHomepage__VariantsArgs;
 export const PlasmicHomepage__VariantProps = new Array<VariantPropType>();
@@ -55,7 +58,12 @@ export const PlasmicHomepage__ArgProps = new Array<ArgPropType>();
 export type PlasmicHomepage__OverridesType = {
   root?: p.Flex<"div">;
   section?: p.Flex<"section">;
+  freeBox?: p.Flex<"div">;
+  list?: p.Flex<"div">;
   checkbox?: p.Flex<typeof Checkbox>;
+  checkbox2?: p.Flex<typeof Checkbox>;
+  copyButton?: p.Flex<typeof RegisterButton>;
+  prompt?: p.Flex<typeof Prompt>;
 };
 
 export interface DefaultHomepageProps {}
@@ -85,11 +93,21 @@ function PlasmicHomepage__RenderFunc(props: {
   const __nextRouter = useNextRouter();
 
   const $ctx = ph.useDataEnv?.() || {};
-  const args = React.useMemo(() => Object.assign({}, props.args), [props.args]);
+  const args = React.useMemo(
+    () =>
+      Object.assign(
+        {},
+
+        props.args
+      ),
+    [props.args]
+  );
+
   const $props = {
     ...args,
     ...variants
   };
+
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
@@ -104,8 +122,16 @@ function PlasmicHomepage__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+
+      {
+        path: "checkbox2.isChecked",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       }
     ],
+
     [$props, $ctx]
   );
   const $state = p.useDollarState(stateSpecs, { $props, $ctx, $queries });
@@ -140,19 +166,69 @@ function PlasmicHomepage__RenderFunc(props: {
             data-plasmic-override={overrides.section}
             className={classNames(projectcss.all, sty.section)}
           >
-            <Checkbox
-              data-plasmic-name={"checkbox"}
-              data-plasmic-override={overrides.checkbox}
-              className={classNames("__wab_instance", sty.checkbox)}
-              isChecked={
-                p.generateStateValueProp($state, ["checkbox", "isChecked"]) ??
-                false
-              }
-              onChange={(...eventArgs) => {
-                p.generateStateOnChangeProp($state, ["checkbox", "isChecked"])(
-                  eventArgs[0]
-                );
-              }}
+            {true ? (
+              <div
+                data-plasmic-name={"freeBox"}
+                data-plasmic-override={overrides.freeBox}
+                className={classNames(projectcss.all, sty.freeBox)}
+              >
+                {true ? (
+                  <div
+                    data-plasmic-name={"list"}
+                    data-plasmic-override={overrides.list}
+                    className={classNames(projectcss.all, sty.list)}
+                  >
+                    <Checkbox
+                      data-plasmic-name={"checkbox"}
+                      data-plasmic-override={overrides.checkbox}
+                      className={classNames("__wab_instance", sty.checkbox)}
+                      isChecked={
+                        p.generateStateValueProp($state, [
+                          "checkbox",
+                          "isChecked"
+                        ]) ?? false
+                      }
+                      onChange={(...eventArgs) => {
+                        p.generateStateOnChangeProp($state, [
+                          "checkbox",
+                          "isChecked"
+                        ])(eventArgs[0]);
+                      }}
+                    >
+                      {"UnstyledTextareaAutosize"}
+                    </Checkbox>
+                    <Checkbox
+                      data-plasmic-name={"checkbox2"}
+                      data-plasmic-override={overrides.checkbox2}
+                      className={classNames("__wab_instance", sty.checkbox2)}
+                      isChecked={
+                        p.generateStateValueProp($state, [
+                          "checkbox2",
+                          "isChecked"
+                        ]) ?? false
+                      }
+                      onChange={(...eventArgs) => {
+                        p.generateStateOnChangeProp($state, [
+                          "checkbox2",
+                          "isChecked"
+                        ])(eventArgs[0]);
+                      }}
+                    >
+                      {"Typewriter"}
+                    </Checkbox>
+                  </div>
+                ) : null}
+                <RegisterButton
+                  data-plasmic-name={"copyButton"}
+                  data-plasmic-override={overrides.copyButton}
+                  className={classNames("__wab_instance", sty.copyButton)}
+                />
+              </div>
+            ) : null}
+            <Prompt
+              data-plasmic-name={"prompt"}
+              data-plasmic-override={overrides.prompt}
+              className={classNames("__wab_instance", sty.prompt)}
             />
           </section>
         </div>
@@ -162,17 +238,44 @@ function PlasmicHomepage__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "section", "checkbox"],
-  section: ["section", "checkbox"],
-  checkbox: ["checkbox"]
+  root: [
+    "root",
+    "section",
+    "freeBox",
+    "list",
+    "checkbox",
+    "checkbox2",
+    "copyButton",
+    "prompt"
+  ],
+  section: [
+    "section",
+    "freeBox",
+    "list",
+    "checkbox",
+    "checkbox2",
+    "copyButton",
+    "prompt"
+  ],
+  freeBox: ["freeBox", "list", "checkbox", "checkbox2", "copyButton"],
+  list: ["list", "checkbox", "checkbox2"],
+  checkbox: ["checkbox"],
+  checkbox2: ["checkbox2"],
+  copyButton: ["copyButton"],
+  prompt: ["prompt"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
-  (typeof PlasmicDescendants)[T][number];
+  typeof PlasmicDescendants[T][number];
 type NodeDefaultElementType = {
   root: "div";
   section: "section";
+  freeBox: "div";
+  list: "div";
   checkbox: typeof Checkbox;
+  checkbox2: typeof Checkbox;
+  copyButton: typeof RegisterButton;
+  prompt: typeof Prompt;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -187,15 +290,15 @@ type NodeComponentProps<T extends NodeNameType> =
     args?: PlasmicHomepage__ArgsType;
     overrides?: NodeOverridesType<T>;
   } & Omit<PlasmicHomepage__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
-    /* Specify args directly as props*/ Omit<
-      PlasmicHomepage__ArgsType,
-      ReservedPropsType
-    > &
-    /* Specify overrides for each element directly as props*/ Omit<
+    // Specify args directly as props
+    Omit<PlasmicHomepage__ArgsType, ReservedPropsType> &
+    // Specify overrides for each element directly as props
+    Omit<
       NodeOverridesType<T>,
       ReservedPropsType | VariantPropType | ArgPropType
     > &
-    /* Specify props for the root element*/ Omit<
+    // Specify props for the root element
+    Omit<
       Partial<React.ComponentProps<NodeDefaultElementType[T]>>,
       ReservedPropsType | VariantPropType | ArgPropType | DescendantsType<T>
     >;
@@ -236,7 +339,12 @@ export const PlasmicHomepage = Object.assign(
   {
     // Helper components rendering sub-elements
     section: makeNodeComponent("section"),
+    freeBox: makeNodeComponent("freeBox"),
+    list: makeNodeComponent("list"),
     checkbox: makeNodeComponent("checkbox"),
+    checkbox2: makeNodeComponent("checkbox2"),
+    copyButton: makeNodeComponent("copyButton"),
+    prompt: makeNodeComponent("prompt"),
 
     // Metadata about props expected for PlasmicHomepage
     internalVariantProps: PlasmicHomepage__VariantProps,

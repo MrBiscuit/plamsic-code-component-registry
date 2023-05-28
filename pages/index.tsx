@@ -2,36 +2,69 @@
 // This file is owned by you, feel free to edit as you see fit.
 import * as React from "react";
 import * as ph from "@plasmicapp/react-web/lib/host";
-
-import { ScreenVariantProvider } from "../components/plasmic/plasmic_code_components_market/PlasmicGlobalVariant__Screen";
+import { registerComponent } from '@plasmicapp/react-web/lib/host';
 import { PlasmicHomepage } from "../components/plasmic/plasmic_code_components_market/PlasmicHomepage";
 import { useRouter } from "next/router";
 
+import { useState,useEffect } from "react";
+import { availableComponents } from './plasmic-host';
+import Checkbox from "@/components/Checkbox";
+
+
 function Homepage() {
-  // Use PlasmicHomepage to render this component as it was
-  // designed in Plasmic, by activating the appropriate variants,
-  // attaching the appropriate event handlers, etc.  You
-  // can also install whatever React hooks you need here to manage state or
-  // fetch data.
-  //
-  // Props you can pass into PlasmicHomepage are:
-  // 1. Variants you want to activate,
-  // 2. Contents for slots you want to fill,
-  // 3. Overrides for any named node in the component to attach behavior and data,
-  // 4. Props to set on the root node.
-  //
-  // By default, PlasmicHomepage is wrapped by your project's global
-  // variant context providers. These wrappers may be moved to
-  // Next.js Custom App component
-  // (https://nextjs.org/docs/advanced-features/custom-app).
-  return (
-    <ph.PageParamsProvider
-      params={useRouter()?.query}
-      query={useRouter()?.query}
-    >
-      <PlasmicHomepage />
-    </ph.PageParamsProvider>
-  );
+ 
+  const [selectedComponents, setSelectedComponents] = useState([]);
+  const [linkCopied, setLinkCopied] = useState(false);
+
+  const handleRegister = (componentName, isChecked) => {
+    if (isChecked) {
+      setSelectedComponents((prev) => [...prev, componentName]);
+    } else {
+      setSelectedComponents((prev) => prev.filter((name) => name !== componentName));
+    }
+  };
+
+
+const handleCopyLink = (e) => {
+  e.preventDefault();
+  const url = `localhost:3000/plasmic-host/?components=${selectedComponents.join(",")}`
+  
+  navigator.clipboard.writeText(url);
+  setLinkCopied(true);
+
+  setTimeout(() => setLinkCopied(false), 1500);
+
+};
+
+return (
+  <ph.PageParamsProvider params={useRouter().query} query={useRouter().query}>
+    <PlasmicHomepage
+      list={{
+        props: {
+          children: availableComponents.map(({ metadata }) => (
+            <div key={metadata.name}>
+              <Checkbox
+                id={metadata.name}
+                children={metadata.name}
+                onChange={(e) => handleRegister(metadata.name, e)}
+              />
+            </div>
+          )),
+        },
+      }}
+      copyButton={{
+        props: {
+          onClick: handleCopyLink,
+        },
+      }}
+      prompt={{
+        props:{
+          show: linkCopied,
+        }
+      }}
+    />
+  </ph.PageParamsProvider>
+);
 }
 
 export default Homepage;

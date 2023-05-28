@@ -51,12 +51,14 @@ export type PlasmicCheckbox__VariantMembers = {
   isChecked: "isChecked";
   isIndeterminate: "isIndeterminate";
 };
+
 export type PlasmicCheckbox__VariantsArgs = {
   noLabel?: SingleBooleanChoiceArg<"noLabel">;
   isDisabled?: SingleBooleanChoiceArg<"isDisabled">;
   isChecked?: SingleBooleanChoiceArg<"isChecked">;
   isIndeterminate?: SingleBooleanChoiceArg<"isIndeterminate">;
 };
+
 type VariantPropType = keyof PlasmicCheckbox__VariantsArgs;
 export const PlasmicCheckbox__VariantProps = new Array<VariantPropType>(
   "noLabel",
@@ -72,6 +74,7 @@ export type PlasmicCheckbox__ArgsType = {
   "aria-label"?: string;
   "aria-labelledby"?: string;
 };
+
 type ArgPropType = keyof PlasmicCheckbox__ArgsType;
 export const PlasmicCheckbox__ArgProps = new Array<ArgPropType>(
   "children",
@@ -117,11 +120,21 @@ function PlasmicCheckbox__RenderFunc(props: {
   const __nextRouter = useNextRouter();
 
   const $ctx = ph.useDataEnv?.() || {};
-  const args = React.useMemo(() => Object.assign({}, props.args), [props.args]);
+  const args = React.useMemo(
+    () =>
+      Object.assign(
+        {},
+
+        props.args
+      ),
+    [props.args]
+  );
+
   const $props = {
     ...args,
     ...variants
   };
+
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
@@ -137,12 +150,14 @@ function PlasmicCheckbox__RenderFunc(props: {
         variableType: "variant",
         initFunc: ({ $props, $state, $queries, $ctx }) => $props.noLabel
       },
+
       {
         path: "isDisabled",
         type: "private",
         variableType: "variant",
         initFunc: ({ $props, $state, $queries, $ctx }) => $props.isDisabled
       },
+
       {
         path: "isChecked",
         type: "writable",
@@ -158,6 +173,7 @@ function PlasmicCheckbox__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => $props.isIndeterminate
       }
     ],
+
     [$props, $ctx]
   );
   const $state = p.useDollarState(stateSpecs, { $props, $ctx, $queries });
@@ -177,6 +193,9 @@ function PlasmicCheckbox__RenderFunc(props: {
         projectcss.plasmic_mixins,
         projectcss.plasmic_tokens,
         sty.root,
+        hasVariant($state, "isChecked", "isChecked")
+          ? ("checkbox:checked" as const)
+          : ("checkbox" as const),
         {
           [sty.rootisChecked]: hasVariant($state, "isChecked", "isChecked"),
           [sty.rootisDisabled]: hasVariant($state, "isDisabled", "isDisabled"),
@@ -232,7 +251,8 @@ function PlasmicCheckbox__RenderFunc(props: {
                     $state,
                     "isChecked",
                     "isChecked"
-                  )
+                  ),
+                  [sty.svgnoLabel]: hasVariant($state, "noLabel", "noLabel")
                 })}
                 role={"img"}
               />
@@ -325,7 +345,7 @@ const PlasmicDescendants = {
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
-  (typeof PlasmicDescendants)[T][number];
+  typeof PlasmicDescendants[T][number];
 type NodeDefaultElementType = {
   root: "div";
   svg: "svg";
@@ -344,15 +364,15 @@ type NodeComponentProps<T extends NodeNameType> =
     args?: PlasmicCheckbox__ArgsType;
     overrides?: NodeOverridesType<T>;
   } & Omit<PlasmicCheckbox__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
-    /* Specify args directly as props*/ Omit<
-      PlasmicCheckbox__ArgsType,
-      ReservedPropsType
-    > &
-    /* Specify overrides for each element directly as props*/ Omit<
+    // Specify args directly as props
+    Omit<PlasmicCheckbox__ArgsType, ReservedPropsType> &
+    // Specify overrides for each element directly as props
+    Omit<
       NodeOverridesType<T>,
       ReservedPropsType | VariantPropType | ArgPropType
     > &
-    /* Specify props for the root element*/ Omit<
+    // Specify props for the root element
+    Omit<
       Partial<React.ComponentProps<NodeDefaultElementType[T]>>,
       ReservedPropsType | VariantPropType | ArgPropType | DescendantsType<T>
     >;
