@@ -6,7 +6,7 @@ import {
 import {UnstyledTextareaAutosize} from "unstyled-textarea-autosize";
 import {Typewriter} from "react-simple-typewriter";
 import ReactMarkdown from "react-markdown";
-import {Motion} from "./Animate";
+import {Motion} from "../components/Animate";
 
 
 export const availableComponents = [
