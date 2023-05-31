@@ -6,6 +6,7 @@ import {
 import {UnstyledTextareaAutosize} from "unstyled-textarea-autosize";
 import {Typewriter} from "react-simple-typewriter";
 import ReactMarkdown from "react-markdown";
+import {Motion} from "./Animate";
 
 
 export const availableComponents = [
@@ -38,6 +39,21 @@ export const availableComponents = [
         },
       },
     },
+  },{
+    component: Motion,
+    metadata: {
+      name: "Motion",
+      importPath: "./components/Animate",
+      props: {
+        from: { type: "object" },
+        to: { type: "object" },
+        isChildren: { type: "boolean", defaultValue: false },
+        whileInView: { type: "object" },
+        whileHover: { type: "object" },
+        whileTap: { type: "object" },
+        children: { type: "slot" },
+      },
+    }
   },
   {
     component: Typewriter,
