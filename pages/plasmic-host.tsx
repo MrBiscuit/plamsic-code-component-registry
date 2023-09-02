@@ -9,7 +9,7 @@ import ReactMarkdown from "react-markdown";
 import {Motion} from "../components/Animate";
 
 
-export const availableComponents = [
+export const otherComponents = [
   {
     component: UnstyledTextareaAutosize,
     metadata: {

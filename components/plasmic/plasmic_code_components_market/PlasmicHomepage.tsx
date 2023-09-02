@@ -61,8 +61,6 @@ export type PlasmicHomepage__OverridesType = {
   header?: p.Flex<"div">;
   text?: p.Flex<"div">;
   copyButton?: p.Flex<typeof RegisterButton>;
-  section?: p.Flex<"section">;
-  freeBox?: p.Flex<"div">;
   list?: p.Flex<"div">;
   checkbox?: p.Flex<typeof Checkbox>;
   checkbox2?: p.Flex<typeof Checkbox>;
@@ -181,71 +179,65 @@ function PlasmicHomepage__RenderFunc(props: {
               />
             </div>
           ) : null}
-          <section
-            data-plasmic-name={"section"}
-            data-plasmic-override={overrides.section}
-            className={classNames(projectcss.all, sty.section)}
-          >
-            {true ? (
-              <div
-                data-plasmic-name={"freeBox"}
-                data-plasmic-override={overrides.freeBox}
-                className={classNames(projectcss.all, sty.freeBox)}
-              >
-                {true ? (
-                  <div
-                    data-plasmic-name={"list"}
-                    data-plasmic-override={overrides.list}
-                    className={classNames(projectcss.all, sty.list)}
-                  >
-                    <Checkbox
-                      data-plasmic-name={"checkbox"}
-                      data-plasmic-override={overrides.checkbox}
-                      className={classNames("__wab_instance", sty.checkbox)}
-                      isChecked={
-                        p.generateStateValueProp($state, [
-                          "checkbox",
-                          "isChecked"
-                        ]) ?? false
-                      }
-                      onChange={(...eventArgs) => {
-                        p.generateStateOnChangeProp($state, [
-                          "checkbox",
-                          "isChecked"
-                        ])(eventArgs[0]);
-                      }}
+          {true ? (
+            <div className={classNames(projectcss.all, sty.freeBox__h3Vkr)}>
+              {true ? (
+                <div className={classNames(projectcss.all, sty.freeBox__vbsoe)}>
+                  {true ? (
+                    <div
+                      data-plasmic-name={"list"}
+                      data-plasmic-override={overrides.list}
+                      className={classNames(projectcss.all, sty.list)}
                     >
-                      {"UnstyledTextareaAutosize"}
-                    </Checkbox>
-                    <Checkbox
-                      data-plasmic-name={"checkbox2"}
-                      data-plasmic-override={overrides.checkbox2}
-                      className={classNames("__wab_instance", sty.checkbox2)}
-                      isChecked={
-                        p.generateStateValueProp($state, [
-                          "checkbox2",
-                          "isChecked"
-                        ]) ?? false
-                      }
-                      onChange={(...eventArgs) => {
-                        p.generateStateOnChangeProp($state, [
-                          "checkbox2",
-                          "isChecked"
-                        ])(eventArgs[0]);
-                      }}
-                    >
-                      {"Typewriter"}
-                    </Checkbox>
-                  </div>
-                ) : null}
-              </div>
-            ) : null}
-            <Prompt
-              data-plasmic-name={"prompt"}
-              data-plasmic-override={overrides.prompt}
-              className={classNames("__wab_instance", sty.prompt)}
-            />
-          </section>
+                      <Checkbox
+                        data-plasmic-name={"checkbox"}
+                        data-plasmic-override={overrides.checkbox}
+                        className={classNames("__wab_instance", sty.checkbox)}
+                        isChecked={
+                          p.generateStateValueProp($state, [
+                            "checkbox",
+                            "isChecked"
+                          ]) ?? false
+                        }
+                        onChange={(...eventArgs) => {
+                          p.generateStateOnChangeProp($state, [
+                            "checkbox",
+                            "isChecked"
+                          ])(eventArgs[0]);
+                        }}
+                      >
+                        {"UnstyledTextareaAutosize"}
+                      </Checkbox>
+                      <Checkbox
+                        data-plasmic-name={"checkbox2"}
+                        data-plasmic-override={overrides.checkbox2}
+                        className={classNames("__wab_instance", sty.checkbox2)}
+                        isChecked={
+                          p.generateStateValueProp($state, [
+                            "checkbox2",
+                            "isChecked"
+                          ]) ?? false
+                        }
+                        onChange={(...eventArgs) => {
+                          p.generateStateOnChangeProp($state, [
+                            "checkbox2",
+                            "isChecked"
+                          ])(eventArgs[0]);
+                        }}
+                      >
+                        {"Typewriter"}
+                      </Checkbox>
+                    </div>
+                  ) : null}
+                </div>
+              ) : null}
+            </div>
+          ) : null}
+          <Prompt
+            data-plasmic-name={"prompt"}
+            data-plasmic-override={overrides.prompt}
+            className={classNames("__wab_instance", sty.prompt)}
+          />
         </div>
       </div>
     </React.Fragment>
@@ -258,8 +250,6 @@ const PlasmicDescendants = {
     "header",
     "text",
     "copyButton",
-    "section",
-    "freeBox",
     "list",
     "checkbox",
     "checkbox2",
@@ -268,8 +258,6 @@ const PlasmicDescendants = {
   header: ["header", "text", "copyButton"],
   text: ["text"],
   copyButton: ["copyButton"],
-  section: ["section", "freeBox", "list", "checkbox", "checkbox2", "prompt"],
-  freeBox: ["freeBox", "list", "checkbox", "checkbox2"],
   list: ["list", "checkbox", "checkbox2"],
   checkbox: ["checkbox"],
   checkbox2: ["checkbox2"],
@@ -283,8 +271,6 @@ type NodeDefaultElementType = {
   header: "div";
   text: "div";
   copyButton: typeof RegisterButton;
-  section: "section";
-  freeBox: "div";
   list: "div";
   checkbox: typeof Checkbox;
   checkbox2: typeof Checkbox;
@@ -354,8 +340,6 @@ export const PlasmicHomepage = Object.assign(
     header: makeNodeComponent("header"),
     text: makeNodeComponent("text"),
     copyButton: makeNodeComponent("copyButton"),
-    section: makeNodeComponent("section"),
-    freeBox: makeNodeComponent("freeBox"),
     list: makeNodeComponent("list"),
     checkbox: makeNodeComponent("checkbox"),
     checkbox2: makeNodeComponent("checkbox2"),

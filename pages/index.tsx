@@ -7,7 +7,7 @@ import { PlasmicHomepage } from "../components/plasmic/plasmic_code_components_m
 import { useRouter } from "next/router";
 
 import { useState,useEffect } from "react";
-import { availableComponents } from './plasmic-host';
+import { otherComponents } from './plasmic-host';
 import Checkbox from "@/components/Checkbox";
 
 
@@ -41,7 +41,7 @@ return (
     <PlasmicHomepage
       list={{
         props: {
-          children: availableComponents.map(({ metadata }) => (
+          children: otherComponents.map(({ metadata }) => (
             <div key={metadata.name}>
               <Checkbox
                 id={metadata.name}
