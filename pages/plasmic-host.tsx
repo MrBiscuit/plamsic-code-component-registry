@@ -74,18 +74,12 @@ export const antdComponents = [
               defaultValue: "center"
           },
           orientationMargin: {
-              type: "either",
-              options: [
-                  {
-                      type: "string",
-                      description: "The margin-left/right between the title and its closest border (with units)"
-                  },
-                  {
-                      type: "number",
-                      description: "The margin-left/right in pixels (without units)"
-                  }
-              ],
-              description: "The margin-left/right between the title and its closest border, while the `orientation` must be `left` or `right`"
+              type: "string",
+              description: "The margin-left/right between the title and its closest border (with units)"
+          },
+          orientationMargin: {
+              type: "number",
+              description: "The margin-left/right in pixels (without units)"
           },
           plain: {
               type: "boolean",
@@ -93,8 +87,8 @@ export const antdComponents = [
               defaultValue: true
           },
           style: {
-              type: "CSSProperties",
-              description: "The style object of container"
+              type: "string",
+              description: "The style object of container represented as a string"
           },
           type: {
               type: "choice",
@@ -106,6 +100,7 @@ export const antdComponents = [
   }
 }
 ]
+
 
 
 
