@@ -58,10 +58,6 @@ export const antdComponents = [
               type: "slot",
               description: "The wrapped title"
           },
-          className: {
-              type: "string",
-              description: "The className of container"
-          },
           dashed: {
               type: "boolean",
               description: "Whether line is dashed",
@@ -139,7 +135,53 @@ export const antdComponents = [
       }
     }
   }
+},
+{
+  component: Breadcrumb.Item,
+  metadata: {
+    name: "BreadcrumbItem", // Using BreadcrumbItem for clarity
+    importPath: "antd",
+    props: {
+      className: {
+        type: "string",
+        description: "The additional css class"
+      },
+      dropdownProps: {
+        type: "reference",
+        description: "The dropdown props",
+        referenceType: "Dropdown" // Placeholder, adjust as needed
+      },
+      href: {
+        type: "string",
+        description: "Target of hyperlink. Can not work with `path`"
+      },
+      path: {
+        type: "string",
+        description: "Connected path. Each path will connect with prev one. Can not work with `href`"
+      },
+      menu: {
+        type: "reference",
+        description: "The menu props",
+        referenceType: "MenuProps" // Placeholder, adjust as needed
+      },
+      onClick: {
+        type: "eventHandler",
+        description: "Set the handler to handle click event",
+        argTypes: [
+          {
+            name: "e",
+            type: "MouseEvent"
+          }
+        ]
+      },
+      title: {
+        type: "slot",
+        description: "item name"
+      }
+    }
+  }
 }
+
 
 ]
 
