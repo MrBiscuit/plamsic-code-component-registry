@@ -8,7 +8,7 @@ import { UnstyledTextareaAutosize } from "unstyled-textarea-autosize";
 import { Typewriter } from "react-simple-typewriter";
 import ReactMarkdown from "react-markdown";
 import { Motion } from "../components/Animate";
-import { Switch, Divider, Breadcrumb, Alert } from "antd";
+import { Switch, Divider, Breadcrumb, Alert,Slider } from "antd";
 
 export const antdComponents = [
   {
@@ -212,7 +212,134 @@ export const antdComponents = [
                 argTypes: []
             }
         }
-    }
+    },
+    {
+      component: Slider,
+      metadata: {
+          name: "Slider",
+          importPath: "antd",
+          props: {
+              autoAdjustOverflow: {
+                  type: "boolean",
+                  description: "Whether to automatically adjust the popup position",
+                  defaultValue: true
+              },
+              autoFocus: {
+                  type: "boolean",
+                  description: "Whether get focus when component mounted",
+                  defaultValue: false
+              },
+              defaultValue: {
+                  type: "array",
+                  description: "The default value of slider.",
+                  defaultValue: [0, 0]
+              },
+              disabled: {
+                  type: "boolean",
+                  description: "If true, the slider will not be intractable",
+                  defaultValue: false
+              },
+              keyboard: {
+                  type: "boolean",
+                  description: "Support using keyboard to move handlers",
+                  defaultValue: true
+              },
+              dots: {
+                  type: "boolean",
+                  description: "Whether the thumb can drag over tick only",
+                  defaultValue: false
+              },
+              included: {
+                  type: "boolean",
+                  description: "Make effect when `marks` not null",
+                  defaultValue: true
+              },
+              marks: {
+                  type: "object",
+                  description: "Tick mark of Slider"
+              },
+              max: {
+                  type: "number",
+                  description: "The maximum value the slider can slide to",
+                  defaultValue: 100
+              },
+              min: {
+                  type: "number",
+                  description: "The minimum value the slider can slide to",
+                  defaultValue: 0
+              },
+              range: {
+                  type: "boolean",
+                  description: "Dual thumb mode",
+                  defaultValue: false
+              },
+              reverse: {
+                  type: "boolean",
+                  description: "Reverse the component",
+                  defaultValue: false
+              },
+              step: {
+                  type: "number",
+                  description: "The granularity the slider can step through values.",
+                  defaultValue: 1
+              },
+              tooltip: {
+                  type: "object",
+                  description: "The tooltip relate props"
+              },
+              value: {
+                  type: "either",
+                  options: [
+                      {
+                          type: "number",
+                          description: "Single value"
+                      },
+                      {
+                          type: "array",
+                          description: "Range value",
+                          arrayType: "number"
+                      }
+                  ],
+                  description: "The value of slider."
+              },
+              vertical: {
+                  type: "boolean",
+                  description: "If true, the slider will be vertical",
+                  defaultValue: false
+              },
+              onAfterChange: {
+                  type: "eventHandler",
+                  argTypes: [
+                      {
+                          name: "value",
+                          type: "number"
+                      }
+                  ]
+              },
+              onChange: {
+                  type: "eventHandler",
+                  argTypes: [
+                      {
+                          name: "value",
+                          type: "number"
+                      }
+                  ]
+              },
+              trackStyle: {
+                  type: "object",
+                  description: "The style of slider track (the active range)"
+              },
+              railStyle: {
+                  type: "object",
+                  description: "The style of slider rail (the background)"
+              },
+              handleStyle: {
+                  type: "object",
+                  description: "The style of slider handle"
+              }
+          }
+      }
+  }
 }
 
 ];
