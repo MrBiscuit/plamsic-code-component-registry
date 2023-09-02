@@ -125,52 +125,28 @@ export const antdComponents = [
       items: {
         type: "array",
         description: "The routing stack information of router",
-        itemTypes: ["RouteItemType", "SeparatorType"] 
-        // Note: You might need to expand these within your code as needed.
+        itemTypes: ["RouteItemType", "SeparatorType"] ,
+        defaultValue:[
+          {
+            "title": "Home"
+          },
+          {
+            "title": "Application Center",
+            "href": ""
+          },
+          {
+            "title": "Application List",
+            "href": ""
+          },
+          {
+            "title": "An Application"
+          }
+        ]
       },
       separator: {
         type: "string",
         description: "Custom separator",
         defaultValue: "/"
-      }
-    }
-  }
-},
-{
-  component: Breadcrumb.Item,
-  metadata: {
-    name: "BreadcrumbItem", 
-    importPath: "antd",
-    props: {
-      className: {
-        type: "string",
-        description: "The additional css class"
-      },
-      href: {
-        type: "string",
-        description: "Target of hyperlink. Can not work with `path`"
-      },
-      path: {
-        type: "string",
-        description: "Connected path. Each path will connect with prev one. Can not work with `href`"
-      },
-      menu: {
-        type: "string",
-        description: "Serialized menu props"
-      },
-      onClick: {
-        type: "eventHandler",
-        description: "Set the handler to handle click event",
-        argTypes: [
-          {
-            name: "e",
-            type: "MouseEvent"
-          }
-        ]
-      },
-      title: {
-        type: "slot",
-        description: "item name"
       }
     }
   }
