@@ -36,6 +36,12 @@ export const antdComponents = [
                 description: "Loading state of switch",
                 defaultValue: false
             },
+            size: {
+              type: "choice",
+              options: ["default", "small"],
+              description: "The size of the Switch",
+              defaultValue: "default"
+          },
             onChange: {
                 type: "eventHandler",
                 argTypes: [
