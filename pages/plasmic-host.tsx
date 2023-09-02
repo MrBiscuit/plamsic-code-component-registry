@@ -139,7 +139,7 @@ export const antdComponents = [
 {
   component: Breadcrumb.Item,
   metadata: {
-    name: "BreadcrumbItem", // Using BreadcrumbItem for clarity
+    name: "BreadcrumbItem", 
     importPath: "antd",
     props: {
       className: {
@@ -147,9 +147,8 @@ export const antdComponents = [
         description: "The additional css class"
       },
       dropdownProps: {
-        type: "reference",
-        description: "The dropdown props",
-        referenceType: "Dropdown" // Placeholder, adjust as needed
+        type: "string",
+        description: "Serialized dropdown props"
       },
       href: {
         type: "string",
@@ -160,9 +159,8 @@ export const antdComponents = [
         description: "Connected path. Each path will connect with prev one. Can not work with `href`"
       },
       menu: {
-        type: "reference",
-        description: "The menu props",
-        referenceType: "MenuProps" // Placeholder, adjust as needed
+        type: "string",
+        description: "Serialized menu props"
       },
       onClick: {
         type: "eventHandler",
@@ -181,6 +179,7 @@ export const antdComponents = [
     }
   }
 }
+
 
 
 ]
