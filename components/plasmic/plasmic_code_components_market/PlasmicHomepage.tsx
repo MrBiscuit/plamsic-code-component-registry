@@ -59,8 +59,10 @@ export const PlasmicHomepage__ArgProps = new Array<ArgPropType>();
 export type PlasmicHomepage__OverridesType = {
   root?: p.Flex<"div">;
   header?: p.Flex<"div">;
-  text?: p.Flex<"div">;
   copyButton?: p.Flex<typeof RegisterButton>;
+  antlist?: p.Flex<"div">;
+  checkbox3?: p.Flex<typeof Checkbox>;
+  checkbox4?: p.Flex<typeof Checkbox>;
   list?: p.Flex<"div">;
   checkbox?: p.Flex<typeof Checkbox>;
   checkbox2?: p.Flex<typeof Checkbox>;
@@ -119,6 +121,18 @@ function PlasmicHomepage__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "checkbox3.isChecked",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "checkbox4.isChecked",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       }
     ],
     [$props, $ctx, $refs]
@@ -162,12 +176,10 @@ function PlasmicHomepage__RenderFunc(props: {
               className={classNames(projectcss.all, sty.header)}
             >
               <div
-                data-plasmic-name={"text"}
-                data-plasmic-override={overrides.text}
                 className={classNames(
                   projectcss.all,
                   projectcss.__wab_text,
-                  sty.text
+                  sty.text__ycyCh
                 )}
               >
                 {"Code Component Market for Plasmic"}
@@ -182,7 +194,84 @@ function PlasmicHomepage__RenderFunc(props: {
           {true ? (
             <div className={classNames(projectcss.all, sty.freeBox__h3Vkr)}>
               {true ? (
+                <div
+                  className={classNames(projectcss.all, sty.freeBox___0MbDx)}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__dlOwx
+                    )}
+                  >
+                    {"Antd Components:"}
+                  </div>
+                  {true ? (
+                    <div
+                      data-plasmic-name={"antlist"}
+                      data-plasmic-override={overrides.antlist}
+                      className={classNames(projectcss.all, sty.antlist)}
+                    >
+                      <Checkbox
+                        data-plasmic-name={"checkbox3"}
+                        data-plasmic-override={overrides.checkbox3}
+                        className={classNames("__wab_instance", sty.checkbox3)}
+                        isChecked={
+                          p.generateStateValueProp($state, [
+                            "checkbox3",
+                            "isChecked"
+                          ]) ?? false
+                        }
+                        onChange={(...eventArgs) => {
+                          p.generateStateOnChangeProp($state, [
+                            "checkbox3",
+                            "isChecked"
+                          ])(eventArgs[0]);
+                        }}
+                      >
+                        {"UnstyledTextareaAutosize"}
+                      </Checkbox>
+                      <Checkbox
+                        data-plasmic-name={"checkbox4"}
+                        data-plasmic-override={overrides.checkbox4}
+                        className={classNames("__wab_instance", sty.checkbox4)}
+                        isChecked={
+                          p.generateStateValueProp($state, [
+                            "checkbox4",
+                            "isChecked"
+                          ]) ?? false
+                        }
+                        onChange={(...eventArgs) => {
+                          p.generateStateOnChangeProp($state, [
+                            "checkbox4",
+                            "isChecked"
+                          ])(eventArgs[0]);
+                        }}
+                      >
+                        {"Typewriter"}
+                      </Checkbox>
+                    </div>
+                  ) : null}
+                </div>
+              ) : null}
+              {true ? (
+                <div className={classNames(projectcss.all, sty.freeBox__ii0Vv)}>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__mpeX7)}
+                  />
+                </div>
+              ) : null}
+              {true ? (
                 <div className={classNames(projectcss.all, sty.freeBox__vbsoe)}>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text___3RMVu
+                    )}
+                  >
+                    {"Other Components:"}
+                  </div>
                   {true ? (
                     <div
                       data-plasmic-name={"list"}
@@ -248,16 +337,20 @@ const PlasmicDescendants = {
   root: [
     "root",
     "header",
-    "text",
     "copyButton",
+    "antlist",
+    "checkbox3",
+    "checkbox4",
     "list",
     "checkbox",
     "checkbox2",
     "prompt"
   ],
-  header: ["header", "text", "copyButton"],
-  text: ["text"],
+  header: ["header", "copyButton"],
   copyButton: ["copyButton"],
+  antlist: ["antlist", "checkbox3", "checkbox4"],
+  checkbox3: ["checkbox3"],
+  checkbox4: ["checkbox4"],
   list: ["list", "checkbox", "checkbox2"],
   checkbox: ["checkbox"],
   checkbox2: ["checkbox2"],
@@ -269,8 +362,10 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: "div";
   header: "div";
-  text: "div";
   copyButton: typeof RegisterButton;
+  antlist: "div";
+  checkbox3: typeof Checkbox;
+  checkbox4: typeof Checkbox;
   list: "div";
   checkbox: typeof Checkbox;
   checkbox2: typeof Checkbox;
@@ -338,8 +433,10 @@ export const PlasmicHomepage = Object.assign(
   {
     // Helper components rendering sub-elements
     header: makeNodeComponent("header"),
-    text: makeNodeComponent("text"),
     copyButton: makeNodeComponent("copyButton"),
+    antlist: makeNodeComponent("antlist"),
+    checkbox3: makeNodeComponent("checkbox3"),
+    checkbox4: makeNodeComponent("checkbox4"),
     list: makeNodeComponent("list"),
     checkbox: makeNodeComponent("checkbox"),
     checkbox2: makeNodeComponent("checkbox2"),

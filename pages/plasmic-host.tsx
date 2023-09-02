@@ -7,8 +7,105 @@ import {UnstyledTextareaAutosize} from "unstyled-textarea-autosize";
 import {Typewriter} from "react-simple-typewriter";
 import ReactMarkdown from "react-markdown";
 import {Motion} from "../components/Animate";
+import {Switch,Divider} from 'antd'
 
+export const antdComponents = [
+  {
+    component: Switch,
+    metadata: {
+        name: "Switch",
+        importPath: "antd",
+        props: {
+            checked: {
+                type: "boolean",
+                description: "Determine whether the Switch is checked",
+                defaultValue: false
+            },
+            autoFocus: {
+                type: "boolean",
+                description: "Whether get focus when component mounted",
+                defaultValue: false
+            },
+            disabled: {
+                type: "boolean",
+                description: "Disable switch",
+                defaultValue: false
+            },
+            loading: {
+                type: "boolean",
+                description: "Loading state of switch",
+                defaultValue: false
+            },
+            onChange: {
+                type: "eventHandler",
+                argTypes: [
+                    {
+                        name: "checked",
+                        type: "boolean"
+                    }
+                ]
+            }
+        }
+    }
+},{
+  component: Divider,
+  metadata: {
+      name: "Divider",
+      importPath: "antd",
+      props: {
+          children: {
+              type: "ReactNode",
+              description: "The wrapped title"
+          },
+          className: {
+              type: "string",
+              description: "The className of container"
+          },
+          dashed: {
+              type: "boolean",
+              description: "Whether line is dashed",
+              defaultValue: false
+          },
+          orientation: {
+              type: "choice",
+              options: ["left", "right", "center"],
+              description: "The position of title inside divider",
+              defaultValue: "center"
+          },
+          orientationMargin: {
+              type: "either",
+              options: [
+                  {
+                      type: "string",
+                      description: "The margin-left/right between the title and its closest border (with units)"
+                  },
+                  {
+                      type: "number",
+                      description: "The margin-left/right in pixels (without units)"
+                  }
+              ],
+              description: "The margin-left/right between the title and its closest border, while the `orientation` must be `left` or `right`"
+          },
+          plain: {
+              type: "boolean",
+              description: "Divider text show as plain style",
+              defaultValue: true
+          },
+          style: {
+              type: "CSSProperties",
+              description: "The style object of container"
+          },
+          type: {
+              type: "choice",
+              options: ["horizontal", "vertical"],
+              description: "The direction type of divider",
+              defaultValue: "horizontal"
+          }
+      }
+  }
+}
 
+]
 export const otherComponents = [
   {
     component: UnstyledTextareaAutosize,
@@ -109,6 +206,7 @@ export const otherComponents = [
   }
 ];
 
+
 let componentsToRegister = [];
 
 if (typeof window !== "undefined") {
@@ -118,12 +216,13 @@ if (typeof window !== "undefined") {
     componentsToRegister = componentsParam.split(",");
   }
 }
+const allComponents = [...otherComponents, ...antdComponents];
 
 componentsToRegister.forEach((componentName) => {
-  const component = availableComponents.find(
+  const component = allComponents.find(
     (comp) => comp.metadata.name === componentName
   );
-
+  
   if (component) {
     registerComponent(component.component, component.metadata);
   }

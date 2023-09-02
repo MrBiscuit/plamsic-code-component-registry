@@ -5,9 +5,9 @@
   width: 100%;
   height: auto;
   cursor: pointer;
+  padding-right: 8px;
   min-width: 0;
   border-radius: 2px;
-  border: 1px solid #ffffff00;
 }
 .root > :global(.__wab_flex-container) {
   flex-direction: row;
@@ -23,8 +23,7 @@
   margin-left: 4px;
 }
 .root:hover {
-  padding-right: 8px;
-  border: 1px solid #0d99ff;
+  box-shadow: inset 0px 0px 0px 1px #0d99ff;
 }
 .freeBox__hYeO {
   display: flex;
@@ -90,8 +89,9 @@
   display: flex;
   position: relative;
   flex-direction: row;
-  align-items: stretch;
+  align-items: center;
   justify-content: flex-start;
+  width: auto;
 }
 .slotTargetChildren {
   white-space: pre;

@@ -7,7 +7,7 @@ import { PlasmicHomepage } from "../components/plasmic/plasmic_code_components_m
 import { useRouter } from "next/router";
 
 import { useState,useEffect } from "react";
-import { otherComponents } from './plasmic-host';
+import { otherComponents, antdComponents } from './plasmic-host';
 import Checkbox from "@/components/Checkbox";
 
 
@@ -51,6 +51,19 @@ return (
             </div>
           )),
         },
+      }}
+      antlist={{
+        props:{
+          children: antdComponents.map(({ metadata }) => (
+            <div key={metadata.name}>
+              <Checkbox
+                id={metadata.name}
+                children={metadata.name}
+                onChange={(e) => handleRegister(metadata.name, e)}
+              />
+            </div>
+          )),
+        }
       }}
       copyButton={{
         props: {
