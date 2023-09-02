@@ -45,20 +45,20 @@ import sty from "./PlasmicCheckbox.module.css"; // plasmic-import: J2h6uk0-o-l/c
 
 import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: X1ymrdv2i3/icon
 
+createPlasmicElementProxy;
+
 export type PlasmicCheckbox__VariantMembers = {
   noLabel: "noLabel";
   isDisabled: "isDisabled";
   isChecked: "isChecked";
   isIndeterminate: "isIndeterminate";
 };
-
 export type PlasmicCheckbox__VariantsArgs = {
   noLabel?: SingleBooleanChoiceArg<"noLabel">;
   isDisabled?: SingleBooleanChoiceArg<"isDisabled">;
   isChecked?: SingleBooleanChoiceArg<"isChecked">;
   isIndeterminate?: SingleBooleanChoiceArg<"isIndeterminate">;
 };
-
 type VariantPropType = keyof PlasmicCheckbox__VariantsArgs;
 export const PlasmicCheckbox__VariantProps = new Array<VariantPropType>(
   "noLabel",
@@ -74,7 +74,6 @@ export type PlasmicCheckbox__ArgsType = {
   "aria-label"?: string;
   "aria-labelledby"?: string;
 };
-
 type ArgPropType = keyof PlasmicCheckbox__ArgsType;
 export const PlasmicCheckbox__ArgProps = new Array<ArgPropType>(
   "children",
@@ -117,32 +116,22 @@ function PlasmicCheckbox__RenderFunc(props: {
   forNode?: string;
 }) {
   const { variants, overrides, forNode } = props;
-  const __nextRouter = useNextRouter();
 
-  const $ctx = ph.useDataEnv?.() || {};
-  const args = React.useMemo(
-    () =>
-      Object.assign(
-        {},
-
-        props.args
-      ),
-    [props.args]
-  );
+  const args = React.useMemo(() => Object.assign({}, props.args), [props.args]);
 
   const $props = {
     ...args,
     ...variants
   };
 
+  const __nextRouter = useNextRouter();
+  const $ctx = ph.useDataEnv?.() || {};
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
   const currentUser = p.useCurrentUser?.() || {};
 
-  const [$queries, setDollarQueries] = React.useState({});
-
-  const stateSpecs = React.useMemo(
+  const stateSpecs: Parameters<typeof p.useDollarState>[0] = React.useMemo(
     () => [
       {
         path: "noLabel",
@@ -150,14 +139,12 @@ function PlasmicCheckbox__RenderFunc(props: {
         variableType: "variant",
         initFunc: ({ $props, $state, $queries, $ctx }) => $props.noLabel
       },
-
       {
         path: "isDisabled",
         type: "private",
         variableType: "variant",
         initFunc: ({ $props, $state, $queries, $ctx }) => $props.isDisabled
       },
-
       {
         path: "isChecked",
         type: "writable",
@@ -173,10 +160,14 @@ function PlasmicCheckbox__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => $props.isIndeterminate
       }
     ],
-
-    [$props, $ctx]
+    [$props, $ctx, $refs]
   );
-  const $state = p.useDollarState(stateSpecs, { $props, $ctx, $queries });
+  const $state = p.useDollarState(stateSpecs, {
+    $props,
+    $ctx,
+    $queries: {},
+    $refs
+  });
 
   return (
     <p.Stack
@@ -364,15 +355,15 @@ type NodeComponentProps<T extends NodeNameType> =
     args?: PlasmicCheckbox__ArgsType;
     overrides?: NodeOverridesType<T>;
   } & Omit<PlasmicCheckbox__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
-    // Specify args directly as props
-    Omit<PlasmicCheckbox__ArgsType, ReservedPropsType> &
-    // Specify overrides for each element directly as props
-    Omit<
+    /* Specify args directly as props*/ Omit<
+      PlasmicCheckbox__ArgsType,
+      ReservedPropsType
+    > &
+    /* Specify overrides for each element directly as props*/ Omit<
       NodeOverridesType<T>,
       ReservedPropsType | VariantPropType | ArgPropType
     > &
-    // Specify props for the root element
-    Omit<
+    /* Specify props for the root element*/ Omit<
       Partial<React.ComponentProps<NodeDefaultElementType[T]>>,
       ReservedPropsType | VariantPropType | ArgPropType | DescendantsType<T>
     >;

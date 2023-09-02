@@ -42,14 +42,14 @@ import "@plasmicapp/react-web/lib/plasmic.css";
 import projectcss from "./plasmic_plasmic_code_components_market.module.css"; // plasmic-import: 8PziLNLiwDrVWxn4w3TkNb/projectcss
 import sty from "./PlasmicPrompt.module.css"; // plasmic-import: c4S_3UOZbZ/css
 
+createPlasmicElementProxy;
+
 export type PlasmicPrompt__VariantMembers = {
   show: "show";
 };
-
 export type PlasmicPrompt__VariantsArgs = {
   show?: SingleBooleanChoiceArg<"show">;
 };
-
 type VariantPropType = keyof PlasmicPrompt__VariantsArgs;
 export const PlasmicPrompt__VariantProps = new Array<VariantPropType>("show");
 
@@ -88,32 +88,22 @@ function PlasmicPrompt__RenderFunc(props: {
   forNode?: string;
 }) {
   const { variants, overrides, forNode } = props;
-  const __nextRouter = useNextRouter();
 
-  const $ctx = ph.useDataEnv?.() || {};
-  const args = React.useMemo(
-    () =>
-      Object.assign(
-        {},
-
-        props.args
-      ),
-    [props.args]
-  );
+  const args = React.useMemo(() => Object.assign({}, props.args), [props.args]);
 
   const $props = {
     ...args,
     ...variants
   };
 
+  const __nextRouter = useNextRouter();
+  const $ctx = ph.useDataEnv?.() || {};
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
   const currentUser = p.useCurrentUser?.() || {};
 
-  const [$queries, setDollarQueries] = React.useState({});
-
-  const stateSpecs = React.useMemo(
+  const stateSpecs: Parameters<typeof p.useDollarState>[0] = React.useMemo(
     () => [
       {
         path: "show",
@@ -122,10 +112,14 @@ function PlasmicPrompt__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => $props.show
       }
     ],
-
-    [$props, $ctx]
+    [$props, $ctx, $refs]
   );
-  const $state = p.useDollarState(stateSpecs, { $props, $ctx, $queries });
+  const $state = p.useDollarState(stateSpecs, {
+    $props,
+    $ctx,
+    $queries: {},
+    $refs
+  });
 
   return (
     (hasVariant($state, "show", "show") ? true : false) ? (
@@ -173,15 +167,15 @@ type NodeComponentProps<T extends NodeNameType> =
     args?: PlasmicPrompt__ArgsType;
     overrides?: NodeOverridesType<T>;
   } & Omit<PlasmicPrompt__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
-    // Specify args directly as props
-    Omit<PlasmicPrompt__ArgsType, ReservedPropsType> &
-    // Specify overrides for each element directly as props
-    Omit<
+    /* Specify args directly as props*/ Omit<
+      PlasmicPrompt__ArgsType,
+      ReservedPropsType
+    > &
+    /* Specify overrides for each element directly as props*/ Omit<
       NodeOverridesType<T>,
       ReservedPropsType | VariantPropType | ArgPropType
     > &
-    // Specify props for the root element
-    Omit<
+    /* Specify props for the root element*/ Omit<
       Partial<React.ComponentProps<NodeDefaultElementType[T]>>,
       ReservedPropsType | VariantPropType | ArgPropType | DescendantsType<T>
     >;

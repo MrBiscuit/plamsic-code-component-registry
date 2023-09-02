@@ -36,8 +36,8 @@ import {
   deriveRenderOpts,
   ensureGlobalVariants
 } from "@plasmicapp/react-web";
-import Checkbox from "../../Checkbox"; // plasmic-import: J2h6uk0-o-l/component
 import RegisterButton from "../../RegisterButton"; // plasmic-import: tdd4VyVt1w/component
+import Checkbox from "../../Checkbox"; // plasmic-import: J2h6uk0-o-l/component
 import Prompt from "../../Prompt"; // plasmic-import: c4S_3UOZbZ/component
 
 import "@plasmicapp/react-web/lib/plasmic.css";
@@ -45,8 +45,9 @@ import "@plasmicapp/react-web/lib/plasmic.css";
 import projectcss from "./plasmic_plasmic_code_components_market.module.css"; // plasmic-import: 8PziLNLiwDrVWxn4w3TkNb/projectcss
 import sty from "./PlasmicHomepage.module.css"; // plasmic-import: OmsGOMJOWuYk/css
 
-export type PlasmicHomepage__VariantMembers = {};
+createPlasmicElementProxy;
 
+export type PlasmicHomepage__VariantMembers = {};
 export type PlasmicHomepage__VariantsArgs = {};
 type VariantPropType = keyof PlasmicHomepage__VariantsArgs;
 export const PlasmicHomepage__VariantProps = new Array<VariantPropType>();
@@ -57,12 +58,14 @@ export const PlasmicHomepage__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicHomepage__OverridesType = {
   root?: p.Flex<"div">;
+  header?: p.Flex<"div">;
+  text?: p.Flex<"div">;
+  copyButton?: p.Flex<typeof RegisterButton>;
   section?: p.Flex<"section">;
   freeBox?: p.Flex<"div">;
   list?: p.Flex<"div">;
   checkbox?: p.Flex<typeof Checkbox>;
   checkbox2?: p.Flex<typeof Checkbox>;
-  copyButton?: p.Flex<typeof RegisterButton>;
   prompt?: p.Flex<typeof Prompt>;
 };
 
@@ -90,32 +93,22 @@ function PlasmicHomepage__RenderFunc(props: {
   forNode?: string;
 }) {
   const { variants, overrides, forNode } = props;
-  const __nextRouter = useNextRouter();
 
-  const $ctx = ph.useDataEnv?.() || {};
-  const args = React.useMemo(
-    () =>
-      Object.assign(
-        {},
-
-        props.args
-      ),
-    [props.args]
-  );
+  const args = React.useMemo(() => Object.assign({}, props.args), [props.args]);
 
   const $props = {
     ...args,
     ...variants
   };
 
+  const __nextRouter = useNextRouter();
+  const $ctx = ph.useDataEnv?.() || {};
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
   const currentUser = p.useCurrentUser?.() || {};
 
-  const [$queries, setDollarQueries] = React.useState({});
-
-  const stateSpecs = React.useMemo(
+  const stateSpecs: Parameters<typeof p.useDollarState>[0] = React.useMemo(
     () => [
       {
         path: "checkbox.isChecked",
@@ -123,7 +116,6 @@ function PlasmicHomepage__RenderFunc(props: {
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       },
-
       {
         path: "checkbox2.isChecked",
         type: "private",
@@ -131,10 +123,14 @@ function PlasmicHomepage__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       }
     ],
-
-    [$props, $ctx]
+    [$props, $ctx, $refs]
   );
-  const $state = p.useDollarState(stateSpecs, { $props, $ctx, $queries });
+  const $state = p.useDollarState(stateSpecs, {
+    $props,
+    $ctx,
+    $queries: {},
+    $refs
+  });
 
   return (
     <React.Fragment>
@@ -161,6 +157,30 @@ function PlasmicHomepage__RenderFunc(props: {
             sty.root
           )}
         >
+          {true ? (
+            <div
+              data-plasmic-name={"header"}
+              data-plasmic-override={overrides.header}
+              className={classNames(projectcss.all, sty.header)}
+            >
+              <div
+                data-plasmic-name={"text"}
+                data-plasmic-override={overrides.text}
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text
+                )}
+              >
+                {"Code Component Market for Plasmic"}
+              </div>
+              <RegisterButton
+                data-plasmic-name={"copyButton"}
+                data-plasmic-override={overrides.copyButton}
+                className={classNames("__wab_instance", sty.copyButton)}
+              />
+            </div>
+          ) : null}
           <section
             data-plasmic-name={"section"}
             data-plasmic-override={overrides.section}
@@ -218,11 +238,6 @@ function PlasmicHomepage__RenderFunc(props: {
                     </Checkbox>
                   </div>
                 ) : null}
-                <RegisterButton
-                  data-plasmic-name={"copyButton"}
-                  data-plasmic-override={overrides.copyButton}
-                  className={classNames("__wab_instance", sty.copyButton)}
-                />
               </div>
             ) : null}
             <Prompt
@@ -240,28 +255,24 @@ function PlasmicHomepage__RenderFunc(props: {
 const PlasmicDescendants = {
   root: [
     "root",
+    "header",
+    "text",
+    "copyButton",
     "section",
     "freeBox",
     "list",
     "checkbox",
     "checkbox2",
-    "copyButton",
     "prompt"
   ],
-  section: [
-    "section",
-    "freeBox",
-    "list",
-    "checkbox",
-    "checkbox2",
-    "copyButton",
-    "prompt"
-  ],
-  freeBox: ["freeBox", "list", "checkbox", "checkbox2", "copyButton"],
+  header: ["header", "text", "copyButton"],
+  text: ["text"],
+  copyButton: ["copyButton"],
+  section: ["section", "freeBox", "list", "checkbox", "checkbox2", "prompt"],
+  freeBox: ["freeBox", "list", "checkbox", "checkbox2"],
   list: ["list", "checkbox", "checkbox2"],
   checkbox: ["checkbox"],
   checkbox2: ["checkbox2"],
-  copyButton: ["copyButton"],
   prompt: ["prompt"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
@@ -269,12 +280,14 @@ type DescendantsType<T extends NodeNameType> =
   typeof PlasmicDescendants[T][number];
 type NodeDefaultElementType = {
   root: "div";
+  header: "div";
+  text: "div";
+  copyButton: typeof RegisterButton;
   section: "section";
   freeBox: "div";
   list: "div";
   checkbox: typeof Checkbox;
   checkbox2: typeof Checkbox;
-  copyButton: typeof RegisterButton;
   prompt: typeof Prompt;
 };
 
@@ -290,15 +303,15 @@ type NodeComponentProps<T extends NodeNameType> =
     args?: PlasmicHomepage__ArgsType;
     overrides?: NodeOverridesType<T>;
   } & Omit<PlasmicHomepage__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
-    // Specify args directly as props
-    Omit<PlasmicHomepage__ArgsType, ReservedPropsType> &
-    // Specify overrides for each element directly as props
-    Omit<
+    /* Specify args directly as props*/ Omit<
+      PlasmicHomepage__ArgsType,
+      ReservedPropsType
+    > &
+    /* Specify overrides for each element directly as props*/ Omit<
       NodeOverridesType<T>,
       ReservedPropsType | VariantPropType | ArgPropType
     > &
-    // Specify props for the root element
-    Omit<
+    /* Specify props for the root element*/ Omit<
       Partial<React.ComponentProps<NodeDefaultElementType[T]>>,
       ReservedPropsType | VariantPropType | ArgPropType | DescendantsType<T>
     >;
@@ -338,12 +351,14 @@ export const PlasmicHomepage = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
+    header: makeNodeComponent("header"),
+    text: makeNodeComponent("text"),
+    copyButton: makeNodeComponent("copyButton"),
     section: makeNodeComponent("section"),
     freeBox: makeNodeComponent("freeBox"),
     list: makeNodeComponent("list"),
     checkbox: makeNodeComponent("checkbox"),
     checkbox2: makeNodeComponent("checkbox2"),
-    copyButton: makeNodeComponent("copyButton"),
     prompt: makeNodeComponent("prompt"),
 
     // Metadata about props expected for PlasmicHomepage

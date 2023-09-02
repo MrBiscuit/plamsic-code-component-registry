@@ -4,7 +4,7 @@
       "projectId": "8PziLNLiwDrVWxn4w3TkNb",
       "version": "latest",
       "dependencies": {
-        "caTPwKxj5ZrD9LQ7DMdK4Z": "3.19.0"
+        "caTPwKxj5ZrD9LQ7DMdK4Z": "3.23.0"
       },
       "lang": "ts",
       "fileLocks": [
@@ -16,22 +16,22 @@
         {
           "type": "renderModule",
           "assetId": "OmsGOMJOWuYk",
-          "checksum": "aa31845f8f24ca593f61ef9c1685411b"
+          "checksum": "a54ff4e0f00074699f063215801aebba"
         },
         {
           "type": "cssRules",
           "assetId": "OmsGOMJOWuYk",
-          "checksum": "aa31845f8f24ca593f61ef9c1685411b"
+          "checksum": "a54ff4e0f00074699f063215801aebba"
         },
         {
           "type": "renderModule",
           "assetId": "J2h6uk0-o-l",
-          "checksum": "c2789e5244fb6b9f4532dd901b9655af"
+          "checksum": "3323f337729e3718e27c2213bb27c1e8"
         },
         {
           "type": "cssRules",
           "assetId": "J2h6uk0-o-l",
-          "checksum": "c2789e5244fb6b9f4532dd901b9655af"
+          "checksum": "3323f337729e3718e27c2213bb27c1e8"
         },
         {
           "type": "icon",
@@ -56,22 +56,22 @@
         {
           "type": "renderModule",
           "assetId": "tdd4VyVt1w",
-          "checksum": "e598ba4d6d3c16f6337dfb1f8bb4a323"
+          "checksum": "185a3eac1c8e30c0344b2c3674c5e75f"
         },
         {
           "type": "cssRules",
           "assetId": "tdd4VyVt1w",
-          "checksum": "e598ba4d6d3c16f6337dfb1f8bb4a323"
+          "checksum": "185a3eac1c8e30c0344b2c3674c5e75f"
         },
         {
           "type": "renderModule",
           "assetId": "c4S_3UOZbZ",
-          "checksum": "cf5ab4feed219a55e25541523b181040"
+          "checksum": "9eb0aa55a722a6c1745453b8b10d4fd8"
         },
         {
           "type": "cssRules",
           "assetId": "c4S_3UOZbZ",
-          "checksum": "cf5ab4feed219a55e25541523b181040"
+          "checksum": "9eb0aa55a722a6c1745453b8b10d4fd8"
         },
         {
           "assetId": "8PziLNLiwDrVWxn4w3TkNb",

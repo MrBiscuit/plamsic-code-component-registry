@@ -42,8 +42,9 @@ import "@plasmicapp/react-web/lib/plasmic.css";
 import projectcss from "./plasmic_plasmic_code_components_market.module.css"; // plasmic-import: 8PziLNLiwDrVWxn4w3TkNb/projectcss
 import sty from "./PlasmicRegisterButton.module.css"; // plasmic-import: tdd4VyVt1w/css
 
-export type PlasmicRegisterButton__VariantMembers = {};
+createPlasmicElementProxy;
 
+export type PlasmicRegisterButton__VariantMembers = {};
 export type PlasmicRegisterButton__VariantsArgs = {};
 type VariantPropType = keyof PlasmicRegisterButton__VariantsArgs;
 export const PlasmicRegisterButton__VariantProps = new Array<VariantPropType>();
@@ -83,30 +84,20 @@ function PlasmicRegisterButton__RenderFunc(props: {
   forNode?: string;
 }) {
   const { variants, overrides, forNode } = props;
-  const __nextRouter = useNextRouter();
 
-  const $ctx = ph.useDataEnv?.() || {};
-  const args = React.useMemo(
-    () =>
-      Object.assign(
-        {},
-
-        props.args
-      ),
-    [props.args]
-  );
+  const args = React.useMemo(() => Object.assign({}, props.args), [props.args]);
 
   const $props = {
     ...args,
     ...variants
   };
 
+  const __nextRouter = useNextRouter();
+  const $ctx = ph.useDataEnv?.() || {};
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
   const currentUser = p.useCurrentUser?.() || {};
-
-  const [$queries, setDollarQueries] = React.useState({});
 
   return (
     <div
@@ -158,15 +149,15 @@ type NodeComponentProps<T extends NodeNameType> =
     args?: PlasmicRegisterButton__ArgsType;
     overrides?: NodeOverridesType<T>;
   } & Omit<PlasmicRegisterButton__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
-    // Specify args directly as props
-    Omit<PlasmicRegisterButton__ArgsType, ReservedPropsType> &
-    // Specify overrides for each element directly as props
-    Omit<
+    /* Specify args directly as props*/ Omit<
+      PlasmicRegisterButton__ArgsType,
+      ReservedPropsType
+    > &
+    /* Specify overrides for each element directly as props*/ Omit<
       NodeOverridesType<T>,
       ReservedPropsType | VariantPropType | ArgPropType
     > &
-    // Specify props for the root element
-    Omit<
+    /* Specify props for the root element*/ Omit<
       Partial<React.ComponentProps<NodeDefaultElementType[T]>>,
       ReservedPropsType | VariantPropType | ArgPropType | DescendantsType<T>
     >;
