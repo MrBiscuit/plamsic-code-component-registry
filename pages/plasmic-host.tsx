@@ -146,10 +146,6 @@ export const antdComponents = [
         type: "string",
         description: "The additional css class"
       },
-      dropdownProps: {
-        type: "string",
-        description: "Serialized dropdown props"
-      },
       href: {
         type: "string",
         description: "Target of hyperlink. Can not work with `path`"
