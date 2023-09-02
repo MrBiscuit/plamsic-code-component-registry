@@ -288,18 +288,7 @@ export const antdComponents = [
                   description: "The tooltip relate props"
               },
               value: {
-                  type: "either",
-                  options: [
-                      {
-                          type: "number",
-                          description: "Single value"
-                      },
-                      {
-                          type: "array",
-                          description: "Range value",
-                          arrayType: "number"
-                      }
-                  ],
+                  type: "array",
                   description: "The value of slider."
               },
               vertical: {
