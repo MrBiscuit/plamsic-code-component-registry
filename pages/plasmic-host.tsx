@@ -7,7 +7,7 @@ import {UnstyledTextareaAutosize} from "unstyled-textarea-autosize";
 import {Typewriter} from "react-simple-typewriter";
 import ReactMarkdown from "react-markdown";
 import {Motion} from "../components/Animate";
-import {Switch,Divider} from 'antd'
+import {Switch,Divider,Breadcrumb} from 'antd'
 
 export const antdComponents = [
   {
@@ -74,10 +74,6 @@ export const antdComponents = [
               defaultValue: "center"
           },
           orientationMargin: {
-              type: "string",
-              description: "The margin-left/right between the title and its closest border (with units)"
-          },
-          orientationMargin: {
               type: "number",
               description: "The margin-left/right in pixels (without units)"
           },
@@ -98,7 +94,53 @@ export const antdComponents = [
           }
       }
   }
+},{
+  component: Breadcrumb,
+  metadata: {
+    name: "Breadcrumb",
+    importPath: "antd",
+    props: {
+      itemRender: {
+        type: "function",
+        description: "Custom item renderer",
+        argTypes: [
+          {
+            name: "route",
+            type: "object",
+          },
+          {
+            name: "params",
+            type: "object",
+          },
+          {
+            name: "routes",
+            type: "array",
+          },
+          {
+            name: "paths",
+            type: "array",
+          }
+        ]
+      },
+      params: {
+        type: "object",
+        description: "Routing parameters"
+      },
+      items: {
+        type: "array",
+        description: "The routing stack information of router",
+        itemTypes: ["RouteItemType", "SeparatorType"] 
+        // Note: You might need to expand these within your code as needed.
+      },
+      separator: {
+        type: "string",
+        description: "Custom separator",
+        defaultValue: "/"
+      }
+    }
+  }
 }
+
 ]
 
 
