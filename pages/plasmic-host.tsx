@@ -47,14 +47,15 @@ export const antdComponents = [
             }
         }
     }
-},{
+},
+{
   component: Divider,
   metadata: {
       name: "Divider",
       importPath: "antd",
       props: {
           children: {
-              type: "ReactNode",
+              type: "slot",
               description: "The wrapped title"
           },
           className: {
@@ -104,8 +105,10 @@ export const antdComponents = [
       }
   }
 }
-
 ]
+
+
+
 export const otherComponents = [
   {
     component: UnstyledTextareaAutosize,
