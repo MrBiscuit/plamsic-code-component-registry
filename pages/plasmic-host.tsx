@@ -27,6 +27,14 @@ export const antdComponents = [
           description: "Whether get focus when component mounted",
           defaultValue: false,
         },
+        checkedChildren:{
+          type:"string",
+          description:"The content to be shown when the state is checked",
+        },
+        uncheckedChildren:{
+          type:"string",
+          description:"The content to be shown when the state is unchecked"
+        },
         disabled: {
           type: "boolean",
           description: "Disable switch",
