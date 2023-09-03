@@ -31,7 +31,7 @@ export const antdComponents = [
           type:"string",
           description:"The content to be shown when the state is checked",
         },
-        uncheckedChildren:{
+        unCheckedChildren:{
           type:"string",
           description:"The content to be shown when the state is unchecked"
         },
