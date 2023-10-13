@@ -9,7 +9,7 @@ import { Typewriter } from "react-simple-typewriter";
 import ReactMarkdown from "react-markdown";
 import { Motion } from "../components/Animate";
 import { Switch, Divider, Breadcrumb, Alert,Slider } from "antd";
-
+import InlineSVG from 'react-inlinesvg';
 export const antdComponents = [
   {
     component: Switch,
@@ -438,7 +438,21 @@ export const otherComponents = [
         },
       },
     },
-  },
+  },{
+    component:InlineSVG,
+    metadata:{
+      name:"InlineSVG",
+      importPath:"react-inlinesvg",
+      isdefaultExport:true,
+      props:{
+        src:{
+          type:"string",
+          description:"The URL or string of the SVG file to load"
+        },
+      }
+      }
+    
+  }
 ];
 
 let componentsToRegister = [];
