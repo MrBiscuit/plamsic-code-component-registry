@@ -446,7 +446,7 @@ export const otherComponents = [
       isdefaultExport:true,
       props:{
         src:{
-          type:"string",
+          type:"dateString",
           description:"The URL or string of the SVG file to load"
         },
       }
