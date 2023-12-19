@@ -10,7 +10,7 @@ import ReactMarkdown from "react-markdown";
 import { Motion } from "../components/Animate";
 import { Switch, Divider, Breadcrumb, Alert,Slider } from "antd";
 import InlineSVG from 'react-inlinesvg';
-import  {ScrollPositionTracker} from "../components/ScrollPositionTracker";
+import {ScrollPositionTracker}  from "../components/ScrollPositionTracker";
 export const antdComponents = [
   {
     component: Switch,
@@ -455,23 +455,25 @@ export const otherComponents = [
     },
   },
   {
-  component:ScrollPositionTracker, 
-  metadata: {
-    name: 'ScrollPositionTracker',
-    props: {
-      onScrollChange: {
-        type: 'function',
-        description: 'Function called with the scroll Y position',
-        args: [{
-          name: 'scrollY',
-          type: 'number',
-          description: 'The current vertical scroll position of the window'
-        }]
-      }
+    component: ScrollPositionTracker,
+    metadata: {
+      name: "ScrollPositionTracker",
+      props: {
+        onScrollChange: {
+          type: "function",
+          description: "Function to set the scroll Y position",
+          args: [
+            {
+              name: "scrollY",
+              type: "number",
+              description: "Current scroll Y position",
+            },
+          ],
+        },
+      },
+      importPath: "./components/ScrollPositionTracker",
     },
-    importPath: './components/ScrollPositionTracker'
-  }
-}
+  },
 ];
 
 let componentsToRegister = [];
@@ -495,84 +497,6 @@ componentsToRegister.forEach((componentName) => {
   }
 });
 
-/* interface SideModalProps {
-  selectedOption?: string;
-  onSelectionChange?: (selectedOption: string) => void;
-  className?: string;
-}
-
-const SideModal: React.FC<SideModalProps> = ({
-  selectedOption,
-  onSelectionChange,
-  className,
-}) => {
-  const handleSelectionChange = (
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    const selectedOption = event.target.value;
-    onSelectionChange && onSelectionChange(selectedOption);
-  };
-
-  return (
-    <div
-      className={className}
-      style={{
-        position: "fixed",
-        right: 0,
-        top: 0,
-        width: "200px",
-        height: "100%",
-        overflow: "auto",
-        backgroundColor: "#f0f0f0",
-      }}
-    >
-      <select value={selectedOption} onChange={handleSelectionChange}>
-        <option value="">Select an option</option>
-        <option value="option1">Option 1</option>
-        <option value="option2">Option 2</option>
-        <option value="option3">Option 3</option>
-      </select>
-    </div>
-  );
-};
-
-const CustomPropControl: React.FC<{
-  value: string;
-  updateValue: (value: string) => void;
-}> = ({ value, updateValue }) => {
-  const handleSelectionChange = (
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    const selectedOption = event.target.value;
-    updateValue(selectedOption);
-  };
-
-  return (
-    <select value={value} onChange={handleSelectionChange}>
-      <option value="">Select an option</option>
-      <option value="option1">Option 1</option>
-      <option value="option2">Option 2</option>
-      <option value="option3">Option 3</option>
-    </select>
-  );
-};
-
-const meta: CodeComponentMeta<SideModalProps> = {
-  name: "SideModal",
-  importPath: "./pages/plasmic-host",
-  props: {
-    selectedOption: {
-      type: "custom",
-      control: CustomPropControl,
-    },
-    normalOptions: {
-      type: "choice",
-      options: ["option1", "option2", "option3"],
-    },
-  },
-};
-
-registerComponent(SideModal, meta); */
 
 export default function PlasmicHost() {
   return <PlasmicCanvasHost />;

@@ -71,13 +71,7 @@ export type PlasmicHomepage__OverridesType = {
 
 export interface DefaultHomepageProps {}
 
-const __wrapUserFunction =
-  globalThis.__PlasmicWrapUserFunction ?? ((loc, fn) => fn());
-const __wrapUserPromise =
-  globalThis.__PlasmicWrapUserPromise ??
-  (async (loc, promise) => {
-    return await promise;
-  });
+const $$ = {};
 
 function useNextRouter() {
   try {
@@ -169,159 +163,141 @@ function PlasmicHomepage__RenderFunc(props: {
             sty.root
           )}
         >
-          {true ? (
+          <div
+            data-plasmic-name={"header"}
+            data-plasmic-override={overrides.header}
+            className={classNames(projectcss.all, sty.header)}
+          >
             <div
-              data-plasmic-name={"header"}
-              data-plasmic-override={overrides.header}
-              className={classNames(projectcss.all, sty.header)}
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text__ycyCh
+              )}
             >
+              {"Code Component Market for Plasmic"}
+            </div>
+            <RegisterButton
+              data-plasmic-name={"copyButton"}
+              data-plasmic-override={overrides.copyButton}
+              className={classNames("__wab_instance", sty.copyButton)}
+            />
+          </div>
+          <div className={classNames(projectcss.all, sty.freeBox__h3Vkr)}>
+            <div className={classNames(projectcss.all, sty.freeBox___0MbDx)}>
               <div
                 className={classNames(
                   projectcss.all,
                   projectcss.__wab_text,
-                  sty.text__ycyCh
+                  sty.text__dlOwx
                 )}
               >
-                {"Code Component Market for Plasmic"}
+                {"Antd Components:"}
               </div>
-              <RegisterButton
-                data-plasmic-name={"copyButton"}
-                data-plasmic-override={overrides.copyButton}
-                className={classNames("__wab_instance", sty.copyButton)}
-              />
-            </div>
-          ) : null}
-          {true ? (
-            <div className={classNames(projectcss.all, sty.freeBox__h3Vkr)}>
-              {true ? (
-                <div
-                  className={classNames(projectcss.all, sty.freeBox___0MbDx)}
+              <div
+                data-plasmic-name={"antlist"}
+                data-plasmic-override={overrides.antlist}
+                className={classNames(projectcss.all, sty.antlist)}
+              >
+                <Checkbox
+                  data-plasmic-name={"checkbox3"}
+                  data-plasmic-override={overrides.checkbox3}
+                  className={classNames("__wab_instance", sty.checkbox3)}
+                  isChecked={
+                    p.generateStateValueProp($state, [
+                      "checkbox3",
+                      "isChecked"
+                    ]) ?? false
+                  }
+                  onChange={(...eventArgs) => {
+                    p.generateStateOnChangeProp($state, [
+                      "checkbox3",
+                      "isChecked"
+                    ])(eventArgs[0]);
+                  }}
                 >
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__dlOwx
-                    )}
-                  >
-                    {"Antd Components:"}
-                  </div>
-                  {true ? (
-                    <div
-                      data-plasmic-name={"antlist"}
-                      data-plasmic-override={overrides.antlist}
-                      className={classNames(projectcss.all, sty.antlist)}
-                    >
-                      <Checkbox
-                        data-plasmic-name={"checkbox3"}
-                        data-plasmic-override={overrides.checkbox3}
-                        className={classNames("__wab_instance", sty.checkbox3)}
-                        isChecked={
-                          p.generateStateValueProp($state, [
-                            "checkbox3",
-                            "isChecked"
-                          ]) ?? false
-                        }
-                        onChange={(...eventArgs) => {
-                          p.generateStateOnChangeProp($state, [
-                            "checkbox3",
-                            "isChecked"
-                          ])(eventArgs[0]);
-                        }}
-                      >
-                        {"UnstyledTextareaAutosize"}
-                      </Checkbox>
-                      <Checkbox
-                        data-plasmic-name={"checkbox4"}
-                        data-plasmic-override={overrides.checkbox4}
-                        className={classNames("__wab_instance", sty.checkbox4)}
-                        isChecked={
-                          p.generateStateValueProp($state, [
-                            "checkbox4",
-                            "isChecked"
-                          ]) ?? false
-                        }
-                        onChange={(...eventArgs) => {
-                          p.generateStateOnChangeProp($state, [
-                            "checkbox4",
-                            "isChecked"
-                          ])(eventArgs[0]);
-                        }}
-                      >
-                        {"Typewriter"}
-                      </Checkbox>
-                    </div>
-                  ) : null}
-                </div>
-              ) : null}
-              {true ? (
-                <div className={classNames(projectcss.all, sty.freeBox__ii0Vv)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__mpeX7)}
-                  />
-                </div>
-              ) : null}
-              {true ? (
-                <div className={classNames(projectcss.all, sty.freeBox__vbsoe)}>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text___3RMVu
-                    )}
-                  >
-                    {"Other Components:"}
-                  </div>
-                  {true ? (
-                    <div
-                      data-plasmic-name={"list"}
-                      data-plasmic-override={overrides.list}
-                      className={classNames(projectcss.all, sty.list)}
-                    >
-                      <Checkbox
-                        data-plasmic-name={"checkbox"}
-                        data-plasmic-override={overrides.checkbox}
-                        className={classNames("__wab_instance", sty.checkbox)}
-                        isChecked={
-                          p.generateStateValueProp($state, [
-                            "checkbox",
-                            "isChecked"
-                          ]) ?? false
-                        }
-                        onChange={(...eventArgs) => {
-                          p.generateStateOnChangeProp($state, [
-                            "checkbox",
-                            "isChecked"
-                          ])(eventArgs[0]);
-                        }}
-                      >
-                        {"UnstyledTextareaAutosize"}
-                      </Checkbox>
-                      <Checkbox
-                        data-plasmic-name={"checkbox2"}
-                        data-plasmic-override={overrides.checkbox2}
-                        className={classNames("__wab_instance", sty.checkbox2)}
-                        isChecked={
-                          p.generateStateValueProp($state, [
-                            "checkbox2",
-                            "isChecked"
-                          ]) ?? false
-                        }
-                        onChange={(...eventArgs) => {
-                          p.generateStateOnChangeProp($state, [
-                            "checkbox2",
-                            "isChecked"
-                          ])(eventArgs[0]);
-                        }}
-                      >
-                        {"Typewriter"}
-                      </Checkbox>
-                    </div>
-                  ) : null}
-                </div>
-              ) : null}
+                  {"UnstyledTextareaAutosize"}
+                </Checkbox>
+                <Checkbox
+                  data-plasmic-name={"checkbox4"}
+                  data-plasmic-override={overrides.checkbox4}
+                  className={classNames("__wab_instance", sty.checkbox4)}
+                  isChecked={
+                    p.generateStateValueProp($state, [
+                      "checkbox4",
+                      "isChecked"
+                    ]) ?? false
+                  }
+                  onChange={(...eventArgs) => {
+                    p.generateStateOnChangeProp($state, [
+                      "checkbox4",
+                      "isChecked"
+                    ])(eventArgs[0]);
+                  }}
+                >
+                  {"Typewriter"}
+                </Checkbox>
+              </div>
             </div>
-          ) : null}
+            <div className={classNames(projectcss.all, sty.freeBox__ii0Vv)}>
+              <div className={classNames(projectcss.all, sty.freeBox__mpeX7)} />
+            </div>
+            <div className={classNames(projectcss.all, sty.freeBox__vbsoe)}>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text___3RMVu
+                )}
+              >
+                {"Other Components:"}
+              </div>
+              <div
+                data-plasmic-name={"list"}
+                data-plasmic-override={overrides.list}
+                className={classNames(projectcss.all, sty.list)}
+              >
+                <Checkbox
+                  data-plasmic-name={"checkbox"}
+                  data-plasmic-override={overrides.checkbox}
+                  className={classNames("__wab_instance", sty.checkbox)}
+                  isChecked={
+                    p.generateStateValueProp($state, [
+                      "checkbox",
+                      "isChecked"
+                    ]) ?? false
+                  }
+                  onChange={(...eventArgs) => {
+                    p.generateStateOnChangeProp($state, [
+                      "checkbox",
+                      "isChecked"
+                    ])(eventArgs[0]);
+                  }}
+                >
+                  {"UnstyledTextareaAutosize"}
+                </Checkbox>
+                <Checkbox
+                  data-plasmic-name={"checkbox2"}
+                  data-plasmic-override={overrides.checkbox2}
+                  className={classNames("__wab_instance", sty.checkbox2)}
+                  isChecked={
+                    p.generateStateValueProp($state, [
+                      "checkbox2",
+                      "isChecked"
+                    ]) ?? false
+                  }
+                  onChange={(...eventArgs) => {
+                    p.generateStateOnChangeProp($state, [
+                      "checkbox2",
+                      "isChecked"
+                    ])(eventArgs[0]);
+                  }}
+                >
+                  {"Typewriter"}
+                </Checkbox>
+              </div>
+            </div>
+          </div>
           <Prompt
             data-plasmic-name={"prompt"}
             data-plasmic-override={overrides.prompt}
@@ -358,7 +334,7 @@ const PlasmicDescendants = {
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
-  typeof PlasmicDescendants[T][number];
+  (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
   header: "div";
@@ -406,7 +382,7 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       () =>
         deriveRenderOpts(props, {
           name: nodeName,
-          descendantNames: [...PlasmicDescendants[nodeName]],
+          descendantNames: PlasmicDescendants[nodeName],
           internalArgPropNames: PlasmicHomepage__ArgProps,
           internalVariantPropNames: PlasmicHomepage__VariantProps
         }),

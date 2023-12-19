@@ -94,13 +94,7 @@ export interface DefaultCheckboxProps extends pp.CheckboxProps {
   "aria-labelledby"?: string;
 }
 
-const __wrapUserFunction =
-  globalThis.__PlasmicWrapUserFunction ?? ((loc, fn) => fn());
-const __wrapUserPromise =
-  globalThis.__PlasmicWrapUserPromise ??
-  (async (loc, promise) => {
-    return await promise;
-  });
+const $$ = {};
 
 function useNextRouter() {
   try {
@@ -185,8 +179,8 @@ function PlasmicCheckbox__RenderFunc(props: {
         projectcss.plasmic_tokens,
         sty.root,
         hasVariant($state, "isChecked", "isChecked")
-          ? ("checkbox:checked" as const)
-          : ("checkbox" as const),
+          ? "checkbox:checked"
+          : "checkbox",
         {
           [sty.rootisChecked]: hasVariant($state, "isChecked", "isChecked"),
           [sty.rootisDisabled]: hasVariant($state, "isDisabled", "isDisabled"),
@@ -223,33 +217,25 @@ function PlasmicCheckbox__RenderFunc(props: {
           )
         })}
       >
-        {(hasVariant($state, "isChecked", "isChecked") ? true : true) ? (
-          <div
-            className={classNames(projectcss.all, sty.freeBox__iQc0, {
-              [sty.freeBoxisChecked__iQc0FZQs]: hasVariant(
-                $state,
-                "isChecked",
-                "isChecked"
-              )
+        <div
+          className={classNames(projectcss.all, sty.freeBox__iQc0, {
+            [sty.freeBoxisChecked__iQc0FZQs]: hasVariant(
+              $state,
+              "isChecked",
+              "isChecked"
+            )
+          })}
+        >
+          <IconIcon
+            data-plasmic-name={"svg"}
+            data-plasmic-override={overrides.svg}
+            className={classNames(projectcss.all, sty.svg, {
+              [sty.svgisChecked]: hasVariant($state, "isChecked", "isChecked"),
+              [sty.svgnoLabel]: hasVariant($state, "noLabel", "noLabel")
             })}
-          >
-            {(hasVariant($state, "isChecked", "isChecked") ? true : true) ? (
-              <IconIcon
-                data-plasmic-name={"svg"}
-                data-plasmic-override={overrides.svg}
-                className={classNames(projectcss.all, sty.svg, {
-                  [sty.svgisChecked]: hasVariant(
-                    $state,
-                    "isChecked",
-                    "isChecked"
-                  ),
-                  [sty.svgnoLabel]: hasVariant($state, "noLabel", "noLabel")
-                })}
-                role={"img"}
-              />
-            ) : null}
-          </div>
-        ) : null}
+            role={"img"}
+          />
+        </div>
       </div>
       {(hasVariant($state, "noLabel", "noLabel") ? false : true) ? (
         <div
@@ -336,7 +322,7 @@ const PlasmicDescendants = {
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
-  typeof PlasmicDescendants[T][number];
+  (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
   svg: "svg";
@@ -377,7 +363,7 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       () =>
         deriveRenderOpts(props, {
           name: nodeName,
-          descendantNames: [...PlasmicDescendants[nodeName]],
+          descendantNames: PlasmicDescendants[nodeName],
           internalArgPropNames: PlasmicCheckbox__ArgProps,
           internalVariantPropNames: PlasmicCheckbox__VariantProps
         }),

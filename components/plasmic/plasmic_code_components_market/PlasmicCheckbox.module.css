@@ -61,7 +61,6 @@
   justify-content: center;
   background: #0d99ff;
   flex-shrink: 0;
-  display: flex;
   border-style: none;
 }
 .svg {
@@ -72,10 +71,8 @@
   transform: scaleX(0.6) scaleY(0.6) scaleZ(1);
   transition-property: all;
   transition-duration: 0.2s;
-  width: 1em;
   height: 1em;
   flex-shrink: 0;
-  display: block;
   -webkit-transition-property: all;
   -webkit-transition-duration: 0.2s;
 }
@@ -83,7 +80,6 @@
   color: #fffcfc;
   opacity: 1;
   transform: scaleX(1) scaleY(1) scaleZ(1);
-  display: block;
 }
 .labelContainer {
   display: flex;
