@@ -462,7 +462,11 @@ export const otherComponents = [
       onScrollChange: {
         type: 'function',
         description: 'Function called with the scroll Y position',
-        args: ['number'] // Indicates that the function expects a number argument
+        args: [{
+          name: 'scrollY',
+          type: 'number',
+          description: 'The current vertical scroll position of the window'
+        }]
       }
     },
     importPath: './components/ScrollPositionTracker'
