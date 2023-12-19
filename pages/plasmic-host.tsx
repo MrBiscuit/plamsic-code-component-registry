@@ -10,6 +10,7 @@ import ReactMarkdown from "react-markdown";
 import { Motion } from "../components/Animate";
 import { Switch, Divider, Breadcrumb, Alert,Slider } from "antd";
 import InlineSVG from 'react-inlinesvg';
+import  {ScrollPositionTracker} from "../components/ScrollPositionTracker";
 export const antdComponents = [
   {
     component: Switch,
@@ -438,21 +439,35 @@ export const otherComponents = [
         },
       },
     },
-  },{
-    component:InlineSVG,
-    metadata:{
-      name:"InlineSVG",
-      importPath:"react-inlinesvg",
-      isdefaultExport:true,
-      props:{
-        src:{
-          type:"dateString",
-          description:"The URL or string of the SVG file to load"
+  },
+  {
+    component: InlineSVG,
+    metadata: {
+      name: "InlineSVG",
+      importPath: "react-inlinesvg",
+      isdefaultExport: true,
+      props: {
+        src: {
+          type: "dateString",
+          description: "The URL or string of the SVG file to load",
         },
+      },
+    },
+  },
+  {
+  component:ScrollPositionTracker, 
+  metadata: {
+    name: 'ScrollPositionTracker',
+    props: {
+      onScrollChange: {
+        type: 'function',
+        description: 'Function called with the scroll Y position',
+        args: ['number'] // Indicates that the function expects a number argument
       }
-      }
-    
+    },
+    importPath: './components/ScrollPositionTracker'
   }
+}
 ];
 
 let componentsToRegister = [];
@@ -476,9 +491,7 @@ componentsToRegister.forEach((componentName) => {
   }
 });
 
-/////
-
-interface SideModalProps {
+/* interface SideModalProps {
   selectedOption?: string;
   onSelectionChange?: (selectedOption: string) => void;
   className?: string;
@@ -555,7 +568,7 @@ const meta: CodeComponentMeta<SideModalProps> = {
   },
 };
 
-registerComponent(SideModal, meta);
+registerComponent(SideModal, meta); */
 
 export default function PlasmicHost() {
   return <PlasmicCanvasHost />;
