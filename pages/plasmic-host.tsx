@@ -10,7 +10,6 @@ import ReactMarkdown from "react-markdown";
 import { Motion } from "../components/Animate";
 import { Switch, Divider, Breadcrumb, Alert,Slider } from "antd";
 import InlineSVG from 'react-inlinesvg';
-import {ScrollPositionTracker}  from "../components/ScrollPositionTracker";
 export const antdComponents = [
   {
     component: Switch,
@@ -452,26 +451,6 @@ export const otherComponents = [
           description: "The URL or string of the SVG file to load",
         },
       },
-    },
-  },
-  {
-    component: ScrollPositionTracker,
-    metadata: {
-      name: "ScrollPositionTracker",
-      props: {
-        onScrollChange: {
-          type: "function",
-          description: "Function to set the scroll Y position",
-          args: [
-            {
-              name: "scrollY",
-              type: "number",
-              description: "Current scroll Y position",
-            },
-          ],
-        },
-      },
-      importPath: "./components/ScrollPositionTracker",
     },
   },
 ];
