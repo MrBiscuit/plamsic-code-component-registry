@@ -9,6 +9,10 @@ import { Typewriter } from "react-simple-typewriter";
 import ReactMarkdown from "react-markdown";
 import { Motion } from "../components/Animate";
 import { Switch, Divider, Breadcrumb, Alert,Slider } from "antd";
+import { TableCell } from "@/components/TableCell";
+import { TableRow } from "@/components/TableRow";
+import { TableBody } from "@/components/TableBody";
+import { Table } from "@/components/Table";
 import InlineSVG from 'react-inlinesvg';
 export const antdComponents = [
   {
@@ -341,6 +345,63 @@ export const antdComponents = [
 ];
 
 export const otherComponents = [
+  {
+    component: Table,
+    metadata: {
+      name: "Table",
+      importPath: "./components/Table",
+      props: {
+        children: {
+          type: "slot",
+          description: "The content of the table, usually TableHeader and TableBody",
+        },
+      },
+    },
+  },
+  {
+    component: TableBody,
+    metadata: {
+      name: "TableBody",
+      importPath: "./components/TableBody",
+      props: {
+        children: {
+          type: "slot",
+          description: "The content of the table body, usually TableRow",
+        },
+      },
+    },
+  },
+  {
+    component: TableRow,
+    metadata: {
+      name: "TableRow",
+      importPath: "./components/TableRow",
+      props: {
+        children: {
+          type: "slot",
+          description: "The content of the table row, usually TableCell",
+        },
+      },
+    },
+  },
+  {
+    component: TableCell,
+    metadata: {
+      name: "TableCell",
+      importPath: "./components/TableCell",
+      props: {
+        children: {
+          type: "slot",
+          description: "The content of the table cell",
+        },
+        isHeader: {
+          type: "boolean",
+          description: "Whether this cell is a header cell (th) or a regular cell (td)",
+          defaultValue: false,
+        },
+      },
+    },
+  },
   {
     component: UnstyledTextareaAutosize,
     metadata: {
