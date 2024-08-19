@@ -353,6 +353,7 @@ export const otherComponents = [
       props: {
         children: {
           type: "slot",
+          allComponents: ["TableHeader", "TableBody"],
           description: "The content of the table, usually TableHeader and TableBody",
         },
       },
@@ -365,6 +366,7 @@ export const otherComponents = [
       importPath: "./components/TableBody",
       props: {
         children: {
+          allComponents: ["TableRow"],
           type: "slot",
           description: "The content of the table body, usually TableRow",
         },
@@ -378,6 +380,7 @@ export const otherComponents = [
       importPath: "./components/TableRow",
       props: {
         children: {
+          allComponents: ["TableCell"],
           type: "slot",
           description: "The content of the table row, usually TableCell",
         },
