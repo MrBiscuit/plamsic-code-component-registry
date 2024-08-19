@@ -130,6 +130,67 @@
   flex-shrink: 0;
   min-height: 0;
 }
+.freeBox__pZx5 {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: auto;
+  height: 100%;
+  max-width: 100%;
+  min-height: 0;
+  padding: 0px;
+}
+.text__wJNyr {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  font-weight: 500;
+  padding-left: 8px;
+  min-width: 0;
+}
+.unstyledList {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+  padding: 0px;
+}
+.checkbox5:global(.__wab_instance) {
+  max-width: 100%;
+}
+.checkbox6:global(.__wab_instance) {
+  max-width: 100%;
+  position: relative;
+}
+.freeBox__dLqd {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: auto;
+  height: 100%;
+  max-width: 100%;
+  min-height: 0;
+  padding: 0px 8px;
+}
+.freeBox__k4HZl {
+  display: block;
+  width: 1px;
+  height: 100%;
+  max-width: 100%;
+  background: #00000033;
+  flex-shrink: 0;
+  min-height: 0;
+}
 .freeBox__vbsoe {
   display: flex;
   position: relative;

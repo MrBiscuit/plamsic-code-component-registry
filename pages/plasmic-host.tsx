@@ -343,8 +343,7 @@ export const antdComponents = [
     }
 }
 ];
-
-export const otherComponents = [
+export const unstyledComponents = [
   {
     component: Table,
     metadata: {
@@ -434,7 +433,10 @@ export const otherComponents = [
         },
       },
     },
-  },
+  }
+]
+export const otherComponents = [
+
   {
     component: Motion,
     metadata: {
@@ -528,7 +530,7 @@ if (typeof window !== "undefined") {
     componentsToRegister = componentsParam.split(",");
   }
 }
-const allComponents = [...otherComponents, ...antdComponents];
+const allComponents = [...otherComponents, ...antdComponents, ...unstyledComponents];
 
 componentsToRegister.forEach((componentName) => {
   const component = allComponents.find(

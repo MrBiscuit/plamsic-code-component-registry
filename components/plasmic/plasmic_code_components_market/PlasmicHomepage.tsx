@@ -17,25 +17,48 @@ import Head from "next/head";
 import Link, { LinkProps } from "next/link";
 import { useRouter } from "next/router";
 
-import * as p from "@plasmicapp/react-web";
-import * as ph from "@plasmicapp/react-web/lib/host";
-
 import {
-  hasVariant,
-  classNames,
-  wrapWithClassName,
-  createPlasmicElementProxy,
-  makeFragment,
+  Flex as Flex__,
   MultiChoiceArg,
+  PlasmicDataSourceContextProvider as PlasmicDataSourceContextProvider__,
+  PlasmicIcon as PlasmicIcon__,
+  PlasmicImg as PlasmicImg__,
+  PlasmicLink as PlasmicLink__,
+  PlasmicPageGuard as PlasmicPageGuard__,
   SingleBooleanChoiceArg,
   SingleChoiceArg,
-  pick,
-  omit,
-  useTrigger,
+  Stack as Stack__,
   StrictProps,
+  Trans as Trans__,
+  classNames,
+  createPlasmicElementProxy,
   deriveRenderOpts,
-  ensureGlobalVariants
+  ensureGlobalVariants,
+  generateOnMutateForSpec,
+  generateStateOnChangeProp,
+  generateStateOnChangePropForCodeComponents,
+  generateStateValueProp,
+  get as $stateGet,
+  hasVariant,
+  initializeCodeComponentStates,
+  initializePlasmicStates,
+  makeFragment,
+  omit,
+  pick,
+  renderPlasmicSlot,
+  set as $stateSet,
+  useCurrentUser,
+  useDollarState,
+  usePlasmicTranslator,
+  useTrigger,
+  wrapWithClassName
 } from "@plasmicapp/react-web";
+import {
+  DataCtxReader as DataCtxReader__,
+  useDataEnv,
+  useGlobalActions
+} from "@plasmicapp/react-web/lib/host";
+
 import RegisterButton from "../../RegisterButton"; // plasmic-import: tdd4VyVt1w/component
 import Checkbox from "../../Checkbox"; // plasmic-import: J2h6uk0-o-l/component
 import Prompt from "../../Prompt"; // plasmic-import: c4S_3UOZbZ/component
@@ -57,16 +80,19 @@ type ArgPropType = keyof PlasmicHomepage__ArgsType;
 export const PlasmicHomepage__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicHomepage__OverridesType = {
-  root?: p.Flex<"div">;
-  header?: p.Flex<"div">;
-  copyButton?: p.Flex<typeof RegisterButton>;
-  antlist?: p.Flex<"div">;
-  checkbox3?: p.Flex<typeof Checkbox>;
-  checkbox4?: p.Flex<typeof Checkbox>;
-  list?: p.Flex<"div">;
-  checkbox?: p.Flex<typeof Checkbox>;
-  checkbox2?: p.Flex<typeof Checkbox>;
-  prompt?: p.Flex<typeof Prompt>;
+  root?: Flex__<"div">;
+  header?: Flex__<"div">;
+  copyButton?: Flex__<typeof RegisterButton>;
+  antlist?: Flex__<"div">;
+  checkbox3?: Flex__<typeof Checkbox>;
+  checkbox4?: Flex__<typeof Checkbox>;
+  unstyledList?: Flex__<"div">;
+  checkbox5?: Flex__<typeof Checkbox>;
+  checkbox6?: Flex__<typeof Checkbox>;
+  list?: Flex__<"div">;
+  checkbox?: Flex__<typeof Checkbox>;
+  checkbox2?: Flex__<typeof Checkbox>;
+  prompt?: Flex__<typeof Prompt>;
 };
 
 export interface DefaultHomepageProps {}
@@ -96,13 +122,11 @@ function PlasmicHomepage__RenderFunc(props: {
   };
 
   const __nextRouter = useNextRouter();
-  const $ctx = ph.useDataEnv?.() || {};
+  const $ctx = useDataEnv?.() || {};
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const currentUser = p.useCurrentUser?.() || {};
-
-  const stateSpecs: Parameters<typeof p.useDollarState>[0] = React.useMemo(
+  const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
         path: "checkbox.isChecked",
@@ -127,11 +151,23 @@ function PlasmicHomepage__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "checkbox5.isChecked",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "checkbox6.isChecked",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       }
     ],
     [$props, $ctx, $refs]
   );
-  const $state = p.useDollarState(stateSpecs, {
+  const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
     $queries: {},
@@ -204,13 +240,13 @@ function PlasmicHomepage__RenderFunc(props: {
                   data-plasmic-override={overrides.checkbox3}
                   className={classNames("__wab_instance", sty.checkbox3)}
                   isChecked={
-                    p.generateStateValueProp($state, [
+                    generateStateValueProp($state, [
                       "checkbox3",
                       "isChecked"
                     ]) ?? false
                   }
                   onChange={(...eventArgs) => {
-                    p.generateStateOnChangeProp($state, [
+                    generateStateOnChangeProp($state, [
                       "checkbox3",
                       "isChecked"
                     ])(eventArgs[0]);
@@ -223,13 +259,13 @@ function PlasmicHomepage__RenderFunc(props: {
                   data-plasmic-override={overrides.checkbox4}
                   className={classNames("__wab_instance", sty.checkbox4)}
                   isChecked={
-                    p.generateStateValueProp($state, [
+                    generateStateValueProp($state, [
                       "checkbox4",
                       "isChecked"
                     ]) ?? false
                   }
                   onChange={(...eventArgs) => {
-                    p.generateStateOnChangeProp($state, [
+                    generateStateOnChangeProp($state, [
                       "checkbox4",
                       "isChecked"
                     ])(eventArgs[0]);
@@ -241,6 +277,64 @@ function PlasmicHomepage__RenderFunc(props: {
             </div>
             <div className={classNames(projectcss.all, sty.freeBox__ii0Vv)}>
               <div className={classNames(projectcss.all, sty.freeBox__mpeX7)} />
+            </div>
+            <div className={classNames(projectcss.all, sty.freeBox__pZx5)}>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__wJNyr
+                )}
+              >
+                {"Unstyled Components:"}
+              </div>
+              <div
+                data-plasmic-name={"unstyledList"}
+                data-plasmic-override={overrides.unstyledList}
+                className={classNames(projectcss.all, sty.unstyledList)}
+              >
+                <Checkbox
+                  data-plasmic-name={"checkbox5"}
+                  data-plasmic-override={overrides.checkbox5}
+                  className={classNames("__wab_instance", sty.checkbox5)}
+                  isChecked={
+                    generateStateValueProp($state, [
+                      "checkbox5",
+                      "isChecked"
+                    ]) ?? false
+                  }
+                  onChange={(...eventArgs) => {
+                    generateStateOnChangeProp($state, [
+                      "checkbox5",
+                      "isChecked"
+                    ])(eventArgs[0]);
+                  }}
+                >
+                  {"UnstyledTextareaAutosize"}
+                </Checkbox>
+                <Checkbox
+                  data-plasmic-name={"checkbox6"}
+                  data-plasmic-override={overrides.checkbox6}
+                  className={classNames("__wab_instance", sty.checkbox6)}
+                  isChecked={
+                    generateStateValueProp($state, [
+                      "checkbox6",
+                      "isChecked"
+                    ]) ?? false
+                  }
+                  onChange={(...eventArgs) => {
+                    generateStateOnChangeProp($state, [
+                      "checkbox6",
+                      "isChecked"
+                    ])(eventArgs[0]);
+                  }}
+                >
+                  {"Typewriter"}
+                </Checkbox>
+              </div>
+            </div>
+            <div className={classNames(projectcss.all, sty.freeBox__dLqd)}>
+              <div className={classNames(projectcss.all, sty.freeBox__k4HZl)} />
             </div>
             <div className={classNames(projectcss.all, sty.freeBox__vbsoe)}>
               <div
@@ -262,13 +356,11 @@ function PlasmicHomepage__RenderFunc(props: {
                   data-plasmic-override={overrides.checkbox}
                   className={classNames("__wab_instance", sty.checkbox)}
                   isChecked={
-                    p.generateStateValueProp($state, [
-                      "checkbox",
-                      "isChecked"
-                    ]) ?? false
+                    generateStateValueProp($state, ["checkbox", "isChecked"]) ??
+                    false
                   }
                   onChange={(...eventArgs) => {
-                    p.generateStateOnChangeProp($state, [
+                    generateStateOnChangeProp($state, [
                       "checkbox",
                       "isChecked"
                     ])(eventArgs[0]);
@@ -281,13 +373,13 @@ function PlasmicHomepage__RenderFunc(props: {
                   data-plasmic-override={overrides.checkbox2}
                   className={classNames("__wab_instance", sty.checkbox2)}
                   isChecked={
-                    p.generateStateValueProp($state, [
+                    generateStateValueProp($state, [
                       "checkbox2",
                       "isChecked"
                     ]) ?? false
                   }
                   onChange={(...eventArgs) => {
-                    p.generateStateOnChangeProp($state, [
+                    generateStateOnChangeProp($state, [
                       "checkbox2",
                       "isChecked"
                     ])(eventArgs[0]);
@@ -317,6 +409,9 @@ const PlasmicDescendants = {
     "antlist",
     "checkbox3",
     "checkbox4",
+    "unstyledList",
+    "checkbox5",
+    "checkbox6",
     "list",
     "checkbox",
     "checkbox2",
@@ -327,6 +422,9 @@ const PlasmicDescendants = {
   antlist: ["antlist", "checkbox3", "checkbox4"],
   checkbox3: ["checkbox3"],
   checkbox4: ["checkbox4"],
+  unstyledList: ["unstyledList", "checkbox5", "checkbox6"],
+  checkbox5: ["checkbox5"],
+  checkbox6: ["checkbox6"],
   list: ["list", "checkbox", "checkbox2"],
   checkbox: ["checkbox"],
   checkbox2: ["checkbox2"],
@@ -342,6 +440,9 @@ type NodeDefaultElementType = {
   antlist: "div";
   checkbox3: typeof Checkbox;
   checkbox4: typeof Checkbox;
+  unstyledList: "div";
+  checkbox5: typeof Checkbox;
+  checkbox6: typeof Checkbox;
   list: "div";
   checkbox: typeof Checkbox;
   checkbox2: typeof Checkbox;
@@ -413,6 +514,9 @@ export const PlasmicHomepage = Object.assign(
     antlist: makeNodeComponent("antlist"),
     checkbox3: makeNodeComponent("checkbox3"),
     checkbox4: makeNodeComponent("checkbox4"),
+    unstyledList: makeNodeComponent("unstyledList"),
+    checkbox5: makeNodeComponent("checkbox5"),
+    checkbox6: makeNodeComponent("checkbox6"),
     list: makeNodeComponent("list"),
     checkbox: makeNodeComponent("checkbox"),
     checkbox2: makeNodeComponent("checkbox2"),
