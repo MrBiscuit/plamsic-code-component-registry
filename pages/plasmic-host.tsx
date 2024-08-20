@@ -352,7 +352,12 @@ export const unstyledComponents = [
       props: {
         children: {
           type: "slot",
-          allComponents: ["TableHeader", "TableBody"],
+          defaultValue: [
+            {
+              type: 'component',
+              name: 'TableBody',
+            }],
+            allowedComponents: ["TableHeader", "TableBody"],
           description: "The content of the table, usually TableHeader and TableBody",
         },
       },
@@ -365,8 +370,18 @@ export const unstyledComponents = [
       importPath: "./components/TableBody",
       props: {
         children: {
-          allComponents: ["TableRow"],
+          allowedComponents: ["TableRow"],
           type: "slot",
+          defaultValue:[
+            {
+              type: 'component',
+              name: 'TableRow',
+            }, {
+              type: 'component',
+              name: 'TableRow',
+
+            }
+          ],
           description: "The content of the table body, usually TableRow",
         },
       },
@@ -379,7 +394,17 @@ export const unstyledComponents = [
       importPath: "./components/TableRow",
       props: {
         children: {
-          allComponents: ["TableCell"],
+          allowedComponents: ["TableCell"],
+          defaultValue: {
+            type: 'component',
+            name: 'TableCell',
+            props: {
+              children: {
+                type: 'text',
+                value: 'TableCell',
+              }
+            },
+          },
           type: "slot",
           description: "The content of the table row, usually TableCell",
         },
@@ -394,6 +419,10 @@ export const unstyledComponents = [
       props: {
         children: {
           type: "slot",
+          defaultValue: {
+            type: 'text',
+            value: 'TableCell',
+        },
           description: "The content of the table cell",
         },
         isHeader: {
