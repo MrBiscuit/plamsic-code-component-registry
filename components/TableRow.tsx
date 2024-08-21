@@ -1,8 +1,8 @@
 import React from 'react';
 
-export const TableRow = ({ children }) => {
+export const TableRow = ({ className,children }) => {
   return (
-    <tr>
+    <tr className = {className}>
       {children}
     </tr>
   );

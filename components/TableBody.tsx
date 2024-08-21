@@ -1,8 +1,8 @@
 import React from 'react';
 
-export const TableBody = ({ children }) => {
+export const TableBody = ({ className, children }) => {
   return (
-    <tbody>
+    <tbody className={className}>
       {children}
     </tbody>
   );

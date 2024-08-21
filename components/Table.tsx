@@ -1,8 +1,8 @@
 import React from 'react';
 
-export const Table = ({ children }) => {
+export const Table = ({ className,children }) => {
   return (
-    <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+    <table className={className}>
       {children}
     </table>
   );

@@ -1,13 +1,13 @@
 import React from 'react';
 
-export const TableCell = ({ children, isHeader = false }) => {
-  return isHeader ? (
-    <th>
-      {children}
-    </th>
-  ) : (
-    <td>
-      {children}
-    </td>
-  );
+export const TableCell = ({ className, children, isHeader = false }) => {
+    return isHeader ? (
+        <th className={className}>
+            {children}
+        </th>
+    ) : (
+        <td className={className}>
+            {children}
+        </td>
+    );
 };
