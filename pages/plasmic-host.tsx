@@ -550,7 +550,7 @@ export const otherComponents = [
   },
 ];
 
-let componentsToRegister = [];
+let componentsToRegister = ["Table", "TableBody", "TableRow", "TableCell"];
 
 if (typeof window !== "undefined") {
   const urlParams = new URLSearchParams(window.location.search);
